@@ -1,6 +1,6 @@
-#import "main_menu.h"
+#import "MainMenu.h"
 
-NSMenu *main_menu_create()
+NSMenu *MainMenuCreate()
 {
 	NSMenu *menubar = [[NSMenu alloc] init];
 	NSMenuItem *application_menu_item = [[NSMenuItem alloc] init];

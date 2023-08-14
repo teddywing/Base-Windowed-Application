@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-#import "main_menu.h"
+#import "MainMenu.h"
 
 @implementation AppDelegate
 
@@ -11,7 +11,7 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
-	NSMenu *menubar = main_menu_create();
+	NSMenu *menubar = MainMenuCreate();
 	[NSApp setMainMenu:menubar];
 	[menubar release];
 
