@@ -2,6 +2,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "AppDelegate.h"
+
 int main() {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
@@ -22,19 +24,11 @@ int main() {
 
 	[application setMainMenu:menubar];
 
-	NSWindow *window = [[NSWindow alloc]
-		initWithContentRect:NSMakeRect(0, 0, 400, 400)
-		styleMask:NSWindowStyleMaskTitled
-		backing:NSBackingStoreBuffered
-		defer:NO];
+	NSObject<NSApplicationDelegate> *app_delegate = [[AppDelegate alloc] init];
 
-	[window setTitle:@"Application"];
-	[window cascadeTopLeftFromPoint:NSMakePoint(100, 100)];
-	[window makeKeyAndOrderFront:nil];
-
+	[application setDelegate:app_delegate];
 	[application run];
 
-	[window release];
 	[quit_menu_item release];
 	[application_menu release];
 	[application_menu_item release];
