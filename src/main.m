@@ -15,6 +15,7 @@ int main() {
 	[application setDelegate:app_delegate];
 	[application run];
 
+	[app_delegate release];
 	[pool drain];
 
 	return EXIT_SUCCESS;
