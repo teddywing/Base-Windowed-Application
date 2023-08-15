@@ -1,0 +1,134 @@
+Application
+	About App Name
+	---
+	Preferences… D-,
+	---
+	Services >
+	---
+	Hide App Name D-H
+	Hide Others D-A-H
+	Show All
+	---
+	Quit App Name D-Q
+
+File
+	New D-N
+	Open… D-O
+	Open Recent >
+	---
+	Close D-W
+	Save… D-S
+	Save As… S-D-S
+	Revert to Saved D-R
+	---
+	Page Setup… S-D-P
+	Print… D-P
+
+Edit
+	Undo D-Z
+	Redo S-D-Z
+	---
+	Cut D-X
+	Copy D-C
+	Paste D-V
+	Paste and Match Style A-S-D-V
+	Delete
+	Select All D-A
+	---
+	Find >
+		Find… D-F
+		Find and Replace… A-D-F
+		Find Next D-G
+		Find Previous S-D-G
+		Use Selection for Find D-E
+		Jump to Selection D-J
+	Spelling and Grammar >
+		Show Spelling and Grammar D-:
+		Check Document Now D-;
+		---
+		Check Spelling While Typing
+		Check Grammar With Spelling
+		Correct Spelling Automatically
+	Substitutions >
+		Show Substitutions
+		---
+		Smart Copy/Paste
+		Smart Quotes
+		Smart Dashes
+		Smart Links
+		Date Detectors
+		Text Replacement
+	Transformations >
+		Make Upper Case
+		Make Lower Case
+		Capitalize
+	Speech >
+		Start Speaking
+		Stop Speaking
+
+Format
+	Font >
+		Show Fonts D-T
+		Bold D-B
+		Italic D-I
+		Underline D-U
+		---
+		Bigger D-+
+		Smaller D--
+		---
+		Kern >
+			Use Default
+			Use None
+			Tighten
+			Loosen
+		Ligatures >
+			Use Default
+			Use None
+			Use All
+		Baseline >
+			Use Default
+			Superscript
+			Subscript
+			Raise
+			Lower
+		---
+		Show Colors S-D-C
+		---
+		Copy Style A-D-C
+		Paste Style A-D-V
+	Text >
+		Align Left D-{
+		Center D-|
+		Justify
+		Align Right D-}
+		---
+		Writing Direction >
+			Paragraph [disabled]
+				[indented] Default
+				[indented] Left to Right
+				[indented] Right to Left
+			---
+			Selection [disabled]
+				[indented] Default
+				[indented] Left to Right
+				[indented] Right to Left
+		---
+		Show Ruler
+		Copy Ruler C-D-C
+		Paste Ruler C-D-V
+
+View
+	Show Toolbar A-D-T
+	Customize Toolbar…
+	---
+	Show Sidebar C-D-S
+	Enter Full Screen C-D-F
+
+Window
+	Minimize D-M
+	Zoom
+	---
+	Bring All to Front
+
+Help
+	App Name Help D-?
