@@ -117,8 +117,62 @@ NSMenuItem *MainMenuCreateFileMenuItem()
 		initWithTitle:@"File"
 		action:nil
 		keyEquivalent:@""];
-
 	NSMenu *file_menu = [[NSMenu alloc] initWithTitle:@"File"];
+
+	[file_menu
+		addItemWithTitle:@"New"
+		action:@selector(newDocument:)
+		keyEquivalent:@"n"];
+
+	[file_menu
+		addItemWithTitle:@"Open…"
+		action:@selector(openDocument:)
+		keyEquivalent:@"o"];
+
+	[file_menu
+		addItemWithTitle:@"Open Recent"
+		action:nil
+		keyEquivalent:@""];
+
+	[file_menu addItem:[NSMenuItem separatorItem]];
+
+	[file_menu
+		addItemWithTitle:@"Close"
+		action:@selector(performClose:)
+		keyEquivalent:@"w"];
+
+	[file_menu
+		addItemWithTitle:@"Save…"
+		action:@selector(saveDocument:)
+		keyEquivalent:@"s"];
+
+	NSMenuItem *save_as_menu_item = [file_menu
+		addItemWithTitle:@"Save As…"
+		action:@selector(saveDocumentAs:)
+		keyEquivalent:@"s"];
+	[save_as_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagShift];
+
+	[file_menu
+		addItemWithTitle:@"Revert to Saved"
+		action:@selector(revertDocumentToSaved:)
+		keyEquivalent:@"r"];
+
+	[file_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *page_setup_menu_item = [file_menu
+		addItemWithTitle:@"Page Setup…"
+		action:@selector(runPageLayout:)
+		keyEquivalent:@"p"];
+	[page_setup_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagShift];
+
+	[file_menu
+		addItemWithTitle:@"Print…"
+		action:@selector(print:)
+		keyEquivalent:@"p"];
 
 	[file_menu_item setSubmenu:file_menu];
 
