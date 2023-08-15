@@ -2,7 +2,7 @@
 
 NSMenuItem *MainMenuCreateApplicationMenuItem();
 NSMenuItem *MainMenuCreateFileMenuItem();
-NSMenu *MainMenuCreateEditMenuItem();
+NSMenuItem *MainMenuCreateEditMenuItem();
 NSMenu *MainMenuCreateViewMenuItem();
 NSMenu *MainMenuCreateWindowMenuItem();
 NSMenu *MainMenuCreateHelpMenuItem();
@@ -16,6 +16,9 @@ NSMenu *MainMenuCreate()
 
 	NSMenuItem *file_menu_item = MainMenuCreateFileMenuItem();
 	[menubar addItem:file_menu_item];
+
+	NSMenuItem *edit_menu_item = MainMenuCreateEditMenuItem();
+	[menubar addItem:edit_menu_item];
 
 	[file_menu_item release];
 	[application_menu_item release];
@@ -181,9 +184,241 @@ NSMenuItem *MainMenuCreateFileMenuItem()
 	return file_menu_item;
 }
 
-NSMenu *MainMenuCreateEditMenuItem()
+NSMenuItem *MainMenuCreateEditMenuItem()
 {
-	return nil;
+	NSMenuItem *edit_menu_item = [[NSMenuItem alloc]
+		initWithTitle:@"Edit"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *edit_menu = [[NSMenu alloc] initWithTitle:@"Edit"];
+
+	[edit_menu
+		addItemWithTitle:@"Undo"
+		action:@selector(undo:)
+		keyEquivalent:@"z"];
+
+	[edit_menu
+		addItemWithTitle:@"Redo"
+		action:@selector(redo:)
+		keyEquivalent:@"Z"];
+
+	[edit_menu addItem:[NSMenuItem separatorItem]];
+
+	[edit_menu
+		addItemWithTitle:@"Cut"
+		action:@selector(cut:)
+		keyEquivalent:@"x"];
+
+	[edit_menu
+		addItemWithTitle:@"Copy"
+		action:@selector(copy:)
+		keyEquivalent:@"c"];
+
+	[edit_menu
+		addItemWithTitle:@"Paste"
+		action:@selector(paste:)
+		keyEquivalent:@"v"];
+
+	NSMenuItem *paste_and_match_style_menu_item = [edit_menu
+		addItemWithTitle:@"Paste and Match Style"
+		action:@selector(pasteAsPlainText:)
+		keyEquivalent:@"V"];
+	[paste_and_match_style_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagOption];
+
+	[edit_menu
+		addItemWithTitle:@"Delete"
+		action:@selector(delete:)
+		keyEquivalent:@""];
+
+	[edit_menu
+		addItemWithTitle:@"Select All"
+		action:@selector(selectAll:)
+		keyEquivalent:@"a"];
+
+	[edit_menu addItem:[NSMenuItem separatorItem]];
+
+	// Find menu.
+	NSMenuItem *find_menu_item = [edit_menu
+		addItemWithTitle:@"Find"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *find_menu = [[NSMenu alloc] initWithTitle:@"Find"];
+	[edit_menu
+		setSubmenu:find_menu
+		forItem:find_menu_item];
+
+	[find_menu
+		addItemWithTitle:@"Find…"
+		action:@selector(performFindPanelAction:)
+		keyEquivalent:@"f"];
+
+	NSMenuItem *find_and_replace_menu_item = [find_menu
+		addItemWithTitle:@"Find and Replace…"
+		action:@selector(performFindPanelAction:)
+		keyEquivalent:@"f"];
+	[find_and_replace_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagOption];
+
+	[find_menu
+		addItemWithTitle:@"Find Next"
+		action:@selector(performFindPanelAction:)
+		keyEquivalent:@"g"];
+
+	[find_menu
+		addItemWithTitle:@"Find Previous"
+		action:@selector(performFindPanelAction:)
+		keyEquivalent:@"G"];
+
+	[find_menu
+		addItemWithTitle:@"Use Selection for Find"
+		action:@selector(performFindPanelAction:)
+		keyEquivalent:@"e"];
+
+	[find_menu
+		addItemWithTitle:@"Jump to Selection"
+		action:@selector(centerSelectionInVisibleArea:)
+		keyEquivalent:@"j"];
+
+	// Spelling and Grammar menu.
+	NSMenuItem *spelling_and_grammar_menu_item = [edit_menu
+		addItemWithTitle:@"Spelling and Grammar"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *spelling_and_grammar_menu = [[NSMenu alloc] initWithTitle:@"Spelling and Grammar"];
+	[edit_menu
+		setSubmenu:spelling_and_grammar_menu
+		forItem:spelling_and_grammar_menu_item];
+
+	[spelling_and_grammar_menu
+		addItemWithTitle:@"Show Spelling and Grammar"
+		action:@selector(showGuessPanel:)
+		keyEquivalent:@":"];
+
+	[spelling_and_grammar_menu
+		addItemWithTitle:@"Check Document Now"
+		action:@selector(checkSpelling:)
+		keyEquivalent:@";"];
+
+	[spelling_and_grammar_menu addItem:[NSMenuItem separatorItem]];
+
+	[spelling_and_grammar_menu
+		addItemWithTitle:@"Check Spelling While Typing"
+		action:@selector(toggleContinuousSpellChecking:)
+		keyEquivalent:@""];
+
+	[spelling_and_grammar_menu
+		addItemWithTitle:@"Check Grammar With Spelling"
+		action:@selector(toggleGrammarChecking:)
+		keyEquivalent:@""];
+
+	[spelling_and_grammar_menu
+		addItemWithTitle:@"Correct Spelling Automatically"
+		action:@selector(toggleAutomaticSpellingCorrection:)
+		keyEquivalent:@""];
+
+	// Substitutions menu.
+	NSMenuItem *substitutions_menu_item = [edit_menu
+		addItemWithTitle:@"Substitutions"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *substitutions_menu = [[NSMenu alloc] initWithTitle:@"Substitutions"];
+	[edit_menu
+		setSubmenu:substitutions_menu
+		forItem:substitutions_menu_item];
+
+	[substitutions_menu
+		addItemWithTitle:@"Show Substitutions"
+		action:@selector(orderFrontSubstitutionsPanel:)
+		keyEquivalent:@""];
+
+	[substitutions_menu addItem:[NSMenuItem separatorItem]];
+
+	[substitutions_menu
+		addItemWithTitle:@"Smart Copy/Paste"
+		action:@selector(toggleSmartInsertDelete:)
+		keyEquivalent:@""];
+
+	[substitutions_menu
+		addItemWithTitle:@"Smart Quotes"
+		action:@selector(toggleAutomaticQuoteSubstitution:)
+		keyEquivalent:@""];
+
+	[substitutions_menu
+		addItemWithTitle:@"Smart Dashes"
+		action:@selector(toggleAutomaticDashSubstitution:)
+		keyEquivalent:@""];
+
+	[substitutions_menu
+		addItemWithTitle:@"Smart Links"
+		action:@selector(toggleAutomaticLinkDetection:)
+		keyEquivalent:@""];
+
+	[substitutions_menu
+		addItemWithTitle:@"Date Detectors"
+		action:@selector(toggleAutomaticDataDetection:)
+		keyEquivalent:@""];
+
+	[substitutions_menu
+		addItemWithTitle:@"Text Replacement"
+		action:@selector(toggleAutomaticTextReplacement:)
+		keyEquivalent:@""];
+
+	NSMenuItem *transformations_menu_item = [edit_menu
+		addItemWithTitle:@"Transformations"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *transformations_menu = [[NSMenu alloc] initWithTitle:@"Transformations"];
+	[edit_menu
+		setSubmenu:transformations_menu
+		forItem:transformations_menu_item];
+
+	[transformations_menu
+		addItemWithTitle:@"Make Upper Case"
+		action:@selector(uppercaseWord:)
+		keyEquivalent:@""];
+
+	[transformations_menu
+		addItemWithTitle:@"Make Lower Case"
+		action:@selector(lowercaseWord:)
+		keyEquivalent:@""];
+
+	[transformations_menu
+		addItemWithTitle:@"Capitalize"
+		action:@selector(capitalizeWord:)
+		keyEquivalent:@""];
+
+	NSMenuItem *speech_menu_item = [edit_menu
+		addItemWithTitle:@"Speech"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *speech_menu = [[NSMenu alloc] initWithTitle:@"Speech"];
+	[edit_menu
+		setSubmenu:speech_menu
+		forItem:speech_menu_item];
+
+	[speech_menu
+		addItemWithTitle:@"Start Speaking"
+		action:@selector(startSpeaking:)
+		keyEquivalent:@""];
+
+	[speech_menu
+		addItemWithTitle:@"Stop Speaking"
+		action:@selector(stopSpeaking:)
+		keyEquivalent:@""];
+
+	[edit_menu_item setSubmenu:edit_menu];
+
+	[find_menu release];
+	[spelling_and_grammar_menu release];
+	[substitutions_menu release];
+	[transformations_menu release];
+	[speech_menu release];
+	[edit_menu release];
+
+	return edit_menu_item;
 }
 
 NSMenu *MainMenuCreateViewMenuItem()
