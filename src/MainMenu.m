@@ -63,6 +63,11 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		addItemWithTitle:@"Services"
 		action:nil
 		keyEquivalent:@""];
+	NSMenu *services_menu = [[NSMenu alloc] initWithTitle:@"Services"];
+	[application_menu
+		setSubmenu:services_menu
+		forItem:services_menu_item];
+	[NSApp setServicesMenu:services_menu];
 
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
@@ -100,6 +105,7 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 
 	[application_menu_item setSubmenu:application_menu];
 
+	[services_menu release];
 	[application_menu release];
 
 	return application_menu_item;
