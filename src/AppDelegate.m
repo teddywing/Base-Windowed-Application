@@ -17,7 +17,11 @@
 
 	_window = [[NSWindow alloc]
 		initWithContentRect:NSMakeRect(0, 0, 400, 400)
-		styleMask:NSWindowStyleMaskTitled
+		styleMask:
+			NSWindowStyleMaskTitled
+			| NSWindowStyleMaskClosable
+			| NSWindowStyleMaskMiniaturizable
+			| NSWindowStyleMaskResizable
 		backing:NSBackingStoreBuffered
 		defer:NO];
 
