@@ -31,13 +31,22 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		keyEquivalent:@""];
 	NSMenu *application_menu = [[NSMenu alloc] initWithTitle:@"Application"];
 
+	NSMenuItem *about_menu_item = [[NSMenuItem alloc]
+		initWithTitle:@"About"
+		action:@selector(orderFrontStandardAboutPanel:)
+		keyEquivalent:@""];
+	[about_menu_item setTarget:NSApp];
+	[application_menu addItem:about_menu_item];
+
 	NSMenuItem *quit_menu_item = [[NSMenuItem alloc]
 		initWithTitle:@"Quit"
 		action:@selector(terminate:)
 		keyEquivalent:@"q"];
 	[application_menu addItem:quit_menu_item];
+
 	[application_menu_item setSubmenu:application_menu];
 
+	[about_menu_item release];
 	[quit_menu_item release];
 	[application_menu release];
 
