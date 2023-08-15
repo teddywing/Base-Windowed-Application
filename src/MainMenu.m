@@ -23,6 +23,17 @@ NSMenu *MainMenuCreate()
 	return menubar;
 }
 
+NSString *MainMenuGetApplicationName()
+{
+	NSString *application_name = [[NSBundle mainBundle]
+		objectForInfoDictionaryKey:@"CFBundleName"];
+	if (!application_name) {
+		return [[NSProcessInfo processInfo] processName];
+	}
+
+	return application_name;
+}
+
 NSMenuItem *MainMenuCreateApplicationMenuItem()
 {
 	NSMenuItem *application_menu_item = [[NSMenuItem alloc]
@@ -31,8 +42,10 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		keyEquivalent:@""];
 	NSMenu *application_menu = [[NSMenu alloc] initWithTitle:@"Application"];
 
+	NSString *about_title = [@"About "
+		stringByAppendingString:MainMenuGetApplicationName()];
 	NSMenuItem *about_menu_item = [application_menu
-		addItemWithTitle:@"About"
+		addItemWithTitle:about_title
 		action:@selector(orderFrontStandardAboutPanel:)
 		keyEquivalent:@""];
 	[about_menu_item setTarget:NSApp];
@@ -53,8 +66,10 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
+	NSString *hide_title = [@"Hide "
+		stringByAppendingString:MainMenuGetApplicationName()];
 	NSMenuItem *hide_menu_item = [application_menu
-		addItemWithTitle:@"Hide"
+		addItemWithTitle:hide_title
 		action:nil
 		keyEquivalent:@"h"];
 
@@ -70,8 +85,10 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
+	NSString *quit_title = [@"Quit "
+		stringByAppendingString:MainMenuGetApplicationName()];
 	NSMenuItem *quit_menu_item = [application_menu
-		addItemWithTitle:@"Quit"
+		addItemWithTitle:quit_title
 		action:@selector(terminate:)
 		keyEquivalent:@"q"];
 
