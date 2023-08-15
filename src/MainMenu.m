@@ -96,6 +96,7 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		addItemWithTitle:quit_title
 		action:@selector(terminate:)
 		keyEquivalent:@"q"];
+	[quit_menu_item setTarget:NSApp];
 
 	[application_menu_item setSubmenu:application_menu];
 
