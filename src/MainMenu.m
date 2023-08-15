@@ -37,15 +37,46 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		keyEquivalent:@""];
 	[about_menu_item setTarget:NSApp];
 
-	NSMenuItem *quit_menu_item = [[NSMenuItem alloc]
-		initWithTitle:@"Quit"
+	[application_menu addItem:[NSMenuItem separatorItem]];
+
+	[application_menu
+		addItemWithTitle:@"Preferences"
+		action:nil
+		keyEquivalent:@","];
+
+	[application_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *services_menu_item = [application_menu
+		addItemWithTitle:@"Services"
+		action:nil
+		keyEquivalent:@""];
+
+	[application_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *hide_menu_item = [application_menu
+		addItemWithTitle:@"Hide"
+		action:nil
+		keyEquivalent:@"h"];
+
+	NSMenuItem *hide_others_menu_item = [application_menu
+		addItemWithTitle:@"Hide Others"
+		action:nil
+		keyEquivalent:@"h"];
+
+	NSMenuItem *show_all_menu_item = [application_menu
+		addItemWithTitle:@"Show All"
+		action:nil
+		keyEquivalent:@""];
+
+	[application_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *quit_menu_item = [application_menu
+		addItemWithTitle:@"Quit"
 		action:@selector(terminate:)
 		keyEquivalent:@"q"];
-	[application_menu addItem:quit_menu_item];
 
 	[application_menu_item setSubmenu:application_menu];
 
-	[quit_menu_item release];
 	[application_menu release];
 
 	return application_menu_item;
