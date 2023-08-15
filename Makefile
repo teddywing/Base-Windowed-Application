@@ -1,7 +1,7 @@
 SOURCES := $(shell find src -name '*.m')
 OBJECTS := $(SOURCES:%.m=%.o)
 
-PRODUCT := Application
+PRODUCT := build/Application
 
 
 .PHONY: all
@@ -14,11 +14,14 @@ all: $(PRODUCT)
 		$< \
 		-o $@
 
-$(PRODUCT): $(OBJECTS)
+$(PRODUCT): $(OBJECTS) | build
 	$(CC) \
 		-framework Cocoa \
 		-o $@ \
 		$^
+
+build:
+	mkdir -p build
 
 .PHONY: clean
 clean:
