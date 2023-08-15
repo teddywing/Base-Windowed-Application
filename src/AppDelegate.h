@@ -2,5 +2,6 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
 	NSWindow *_window;
+	NSTextView *_text_view;
 }
 @end
