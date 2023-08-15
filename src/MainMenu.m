@@ -192,6 +192,7 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 		keyEquivalent:@""];
 	NSMenu *edit_menu = [[NSMenu alloc] initWithTitle:@"Edit"];
 
+	// TODO: Undo and redo don't work.
 	[edit_menu
 		addItemWithTitle:@"Undo"
 		action:@selector(undo:)
@@ -240,6 +241,7 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	[edit_menu addItem:[NSMenuItem separatorItem]];
 
 	// Find menu.
+	// TODO: Find items don't appear to work except for D-j
 	NSMenuItem *find_menu_item = [edit_menu
 		addItemWithTitle:@"Find"
 		action:nil
