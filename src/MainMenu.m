@@ -70,13 +70,18 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		stringByAppendingString:MainMenuGetApplicationName()];
 	NSMenuItem *hide_menu_item = [application_menu
 		addItemWithTitle:hide_title
-		action:nil
+		action:@selector(hide:)
 		keyEquivalent:@"h"];
+	[hide_menu_item setTarget:NSApp];
 
 	NSMenuItem *hide_others_menu_item = [application_menu
 		addItemWithTitle:@"Hide Others"
-		action:nil
+		action:@selector(hideOtherApplications:)
 		keyEquivalent:@"h"];
+	[hide_others_menu_item setTarget:NSApp];
+	[hide_others_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagOption];
 
 	NSMenuItem *show_all_menu_item = [application_menu
 		addItemWithTitle:@"Show All"
