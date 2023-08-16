@@ -251,33 +251,41 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 		setSubmenu:find_menu
 		forItem:find_menu_item];
 
-	[find_menu
+	NSMenuItem *find_ellipsis_menu_item = [find_menu
 		addItemWithTitle:@"Find…"
 		action:@selector(performFindPanelAction:)
+		// action:@selector(performTextFinderAction:)
 		keyEquivalent:@"f"];
+	[find_ellipsis_menu_item setTag:NSTextFinderActionShowFindInterface];
+	// [find_ellipsis_menu_item setTag:1];
+	// NSFindPanelActionShowFindPanel ?
 
 	NSMenuItem *find_and_replace_menu_item = [find_menu
 		addItemWithTitle:@"Find and Replace…"
-		action:@selector(performFindPanelAction:)
+		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"f"];
 	[find_and_replace_menu_item
 		setKeyEquivalentModifierMask:
 			NSEventModifierFlagCommand | NSEventModifierFlagOption];
+	[find_and_replace_menu_item setTag:NSTextFinderActionShowReplaceInterface];
 
-	[find_menu
+	NSMenuItem *find_next_menu_item = [find_menu
 		addItemWithTitle:@"Find Next"
-		action:@selector(performFindPanelAction:)
+		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"g"];
+	[find_next_menu_item setTag:NSTextFinderActionNextMatch];
 
-	[find_menu
+	NSMenuItem *find_previous_menu_item = [find_menu
 		addItemWithTitle:@"Find Previous"
-		action:@selector(performFindPanelAction:)
+		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"G"];
+	[find_previous_menu_item setTag:NSTextFinderActionPreviousMatch];
 
-	[find_menu
+	NSMenuItem *use_selection_for_find_menu_item = [find_menu
 		addItemWithTitle:@"Use Selection for Find"
-		action:@selector(performFindPanelAction:)
+		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"e"];
+	[use_selection_for_find_menu_item setTag:NSTextFinderActionSetSearchString];
 
 	[find_menu
 		addItemWithTitle:@"Jump to Selection"
