@@ -3,9 +3,9 @@
 NSMenuItem *MainMenuCreateApplicationMenuItem();
 NSMenuItem *MainMenuCreateFileMenuItem();
 NSMenuItem *MainMenuCreateEditMenuItem();
-NSMenu *MainMenuCreateViewMenuItem();
-NSMenu *MainMenuCreateWindowMenuItem();
-NSMenu *MainMenuCreateHelpMenuItem();
+NSMenuItem *MainMenuCreateViewMenuItem();
+NSMenuItem *MainMenuCreateWindowMenuItem();
+NSMenuItem *MainMenuCreateHelpMenuItem();
 
 NSMenu *MainMenuCreate()
 {
@@ -431,17 +431,17 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	return edit_menu_item;
 }
 
-NSMenu *MainMenuCreateViewMenuItem()
+NSMenuItem *MainMenuCreateViewMenuItem()
 {
 	return nil;
 }
 
-NSMenu *MainMenuCreateWindowMenuItem()
+NSMenuItem *MainMenuCreateWindowMenuItem()
 {
 	return nil;
 }
 
-NSMenu *MainMenuCreateHelpMenuItem()
+NSMenuItem *MainMenuCreateHelpMenuItem()
 {
 	return nil;
 }
