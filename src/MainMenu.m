@@ -138,6 +138,7 @@ NSMenuItem *MainMenuCreateFileMenuItem()
 		action:@selector(openDocument:)
 		keyEquivalent:@"o"];
 
+	// TODO Add a real "Open Recent" menu.
 	[file_menu
 		addItemWithTitle:@"Open Recent"
 		action:nil
