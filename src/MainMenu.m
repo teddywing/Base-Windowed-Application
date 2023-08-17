@@ -3,6 +3,7 @@
 NSMenuItem *MainMenuCreateApplicationMenuItem();
 NSMenuItem *MainMenuCreateFileMenuItem();
 NSMenuItem *MainMenuCreateEditMenuItem();
+NSMenuItem *MainMenuCreateFormatMenuItem();
 NSMenuItem *MainMenuCreateViewMenuItem();
 NSMenuItem *MainMenuCreateWindowMenuItem();
 NSMenuItem *MainMenuCreateHelpMenuItem();
@@ -20,6 +21,11 @@ NSMenu *MainMenuCreate()
 	NSMenuItem *edit_menu_item = MainMenuCreateEditMenuItem();
 	[menubar addItem:edit_menu_item];
 
+	NSMenuItem *format_menu_item = MainMenuCreateFormatMenuItem();
+	[menubar addItem:format_menu_item];
+
+	[format_menu_item release];
+	[edit_menu_item release];
 	[file_menu_item release];
 	[application_menu_item release];
 
@@ -429,6 +435,177 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	[edit_menu release];
 
 	return edit_menu_item;
+}
+
+NSMenuItem *MainMenuCreateFormatMenuItem()
+{
+	NSMenuItem *format_menu_item = [[NSMenuItem alloc]
+		initWithTitle:@"Format"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *format_menu = [[NSMenu alloc] initWithTitle:@"Format"];
+
+	NSMenuItem *font_menu_item = [format_menu
+		addItemWithTitle:@"Font"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *font_menu = [[NSMenu alloc] initWithTitle:@"Font"];
+	[format_menu
+		setSubmenu:font_menu
+		forItem:font_menu_item];
+
+	[font_menu
+		addItemWithTitle:@"Show Fonts"
+		action:@selector(orderFrontFontPanel:)
+		keyEquivalent:@"t"];
+
+	[font_menu
+		addItemWithTitle:@"Bold"
+		action:@selector(todo:)
+		keyEquivalent:@"b"];
+
+	[font_menu
+		addItemWithTitle:@"Italic"
+		action:@selector(todo:)
+		keyEquivalent:@"i"];
+
+	[font_menu
+		addItemWithTitle:@"Underline"
+		action:@selector(todo:)
+		keyEquivalent:@"u"];
+
+	[font_menu addItem:[NSMenuItem separatorItem]];
+
+	[font_menu
+		addItemWithTitle:@"Bigger"
+		action:@selector(todo:)
+		keyEquivalent:@"+"];
+
+	[font_menu
+		addItemWithTitle:@"Smaller"
+		action:@selector(todo:)
+		keyEquivalent:@"-"];
+
+	[font_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *kern_menu_item = [font_menu
+		addItemWithTitle:@"Kern"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *kern_menu = [[NSMenu alloc] initWithTitle:@"Kern"];
+	[font_menu
+		setSubmenu:kern_menu
+		forItem:kern_menu_item];
+
+	[kern_menu
+		addItemWithTitle:@"Use Default"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[kern_menu
+		addItemWithTitle:@"Use None"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[kern_menu
+		addItemWithTitle:@"Tighten"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[kern_menu
+		addItemWithTitle:@"Loosen"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	NSMenuItem *ligatures_menu_item = [font_menu
+		addItemWithTitle:@"Ligatures"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *ligatures_menu = [[NSMenu alloc] initWithTitle:@"Ligatures"];
+	[font_menu
+		setSubmenu:ligatures_menu
+		forItem:ligatures_menu_item];
+
+	[ligatures_menu
+		addItemWithTitle:@"Use Default"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[ligatures_menu
+		addItemWithTitle:@"Use None"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[ligatures_menu
+		addItemWithTitle:@"Use All"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	NSMenuItem *baseline_menu_item = [font_menu
+		addItemWithTitle:@"Baseline"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *baseline_menu = [[NSMenu alloc] initWithTitle:@"Baseline"];
+	[font_menu
+		setSubmenu:baseline_menu
+		forItem:baseline_menu_item];
+
+	[baseline_menu
+		addItemWithTitle:@"Use Default"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[baseline_menu
+		addItemWithTitle:@"Superscript"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[baseline_menu
+		addItemWithTitle:@"Subscript"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[baseline_menu
+		addItemWithTitle:@"Raise"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[baseline_menu
+		addItemWithTitle:@"Lower"
+		action:@selector(todo:)
+		keyEquivalent:@""];
+
+	[font_menu addItem:[NSMenuItem separatorItem]];
+
+	[font_menu
+		addItemWithTitle:@"Show Colors"
+		action:@selector(todo:)
+		keyEquivalent:@"C"];
+
+	[font_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *copy_style_menu_item = [font_menu
+		addItemWithTitle:@"Copy Style"
+		action:@selector(todo:)
+		keyEquivalent:@"c"];
+	[copy_style_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagOption];
+
+	NSMenuItem *paste_style_menu_item = [font_menu
+		addItemWithTitle:@"Paste Style"
+		action:@selector(todo:)
+		keyEquivalent:@"v"];
+	[paste_style_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagOption];
+
+	[format_menu_item setSubmenu:format_menu];
+
+	[font_menu release];
+	[format_menu release];
+
+	return format_menu_item;
 }
 
 NSMenuItem *MainMenuCreateViewMenuItem()
