@@ -601,8 +601,116 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		setKeyEquivalentModifierMask:
 			NSEventModifierFlagCommand | NSEventModifierFlagOption];
 
+	NSMenuItem *text_menu_item = [format_menu
+		addItemWithTitle:@"Text"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *text_menu = [[NSMenu alloc] initWithTitle:@"Text"];
+	[format_menu
+		setSubmenu:text_menu
+		forItem:text_menu_item];
+
+	[text_menu
+		addItemWithTitle:@"Align Left"
+		action:@selector(orderFrontFontPanel:)
+		keyEquivalent:@"{"];
+
+	[text_menu
+		addItemWithTitle:@"Center"
+		action:@selector(orderFrontFontPanel:)
+		keyEquivalent:@"|"];
+
+	[text_menu
+		addItemWithTitle:@"Justify"
+		action:@selector(orderFrontFontPanel:)
+		keyEquivalent:@""];
+
+	[text_menu
+		addItemWithTitle:@"Align Right"
+		action:@selector(orderFrontFontPanel:)
+		keyEquivalent:@"}"];
+
+	[text_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *writing_direction_menu_item = [text_menu
+		addItemWithTitle:@"Writing Direction"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *writing_direction_menu = [[NSMenu alloc]
+		initWithTitle:@"Writing Direction"];
+	[text_menu
+		setSubmenu:writing_direction_menu
+		forItem:writing_direction_menu_item];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Paragraph"
+		action:nil
+		keyEquivalent:@""];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Default"
+		action:nil
+		keyEquivalent:@""];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Left to Right"
+		action:nil
+		keyEquivalent:@""];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Right to Left"
+		action:nil
+		keyEquivalent:@""];
+
+	[writing_direction_menu addItem:[NSMenuItem separatorItem]];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Selection"
+		action:nil
+		keyEquivalent:@""];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Default"
+		action:nil
+		keyEquivalent:@""];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Left to Right"
+		action:nil
+		keyEquivalent:@""];
+
+	[writing_direction_menu
+		addItemWithTitle:@"Right to Left"
+		action:nil
+		keyEquivalent:@""];
+
+	[text_menu addItem:[NSMenuItem separatorItem]];
+
+	[text_menu
+		addItemWithTitle:@"Show Ruler"
+		action:nil
+		keyEquivalent:@""];
+
+	NSMenuItem *copy_ruler_menu_item = [text_menu
+		addItemWithTitle:@"Copy Ruler"
+		action:nil
+		keyEquivalent:@"c"];
+	[copy_ruler_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagControl];
+
+	NSMenuItem *paste_ruler_menu_item = [text_menu
+		addItemWithTitle:@"Paste Ruler"
+		action:nil
+		keyEquivalent:@"v"];
+	[paste_ruler_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagControl];
+
 	[format_menu_item setSubmenu:format_menu];
 
+	[writing_direction_menu release];
+	[text_menu release];
 	[font_menu release];
 	[format_menu release];
 
