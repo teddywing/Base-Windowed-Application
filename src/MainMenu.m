@@ -27,6 +27,10 @@ NSMenu *MainMenuCreate()
 	NSMenuItem *view_menu_item = MainMenuCreateViewMenuItem();
 	[menubar addItem:view_menu_item];
 
+	NSMenuItem *window_menu_item = MainMenuCreateWindowMenuItem();
+	[menubar addItem:window_menu_item];
+
+	[window_menu_item release];
 	[view_menu_item release];
 	[format_menu_item release];
 	[edit_menu_item release];
@@ -775,7 +779,34 @@ NSMenuItem *MainMenuCreateViewMenuItem()
 
 NSMenuItem *MainMenuCreateWindowMenuItem()
 {
-	return nil;
+	NSMenuItem *window_menu_item = [[NSMenuItem alloc]
+		initWithTitle:@"Window"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *window_menu = [[NSMenu alloc] initWithTitle:@"Window"];
+
+	[window_menu
+		addItemWithTitle:@"Minimize"
+		action:@selector(performMiniaturize:)
+		keyEquivalent:@"m"];
+
+	[window_menu
+		addItemWithTitle:@"Zoom"
+		action:@selector(performZoom:)
+		keyEquivalent:@""];
+
+	[window_menu addItem:[NSMenuItem separatorItem]];
+
+	[window_menu
+		addItemWithTitle:@"Bring All to Front"
+		action:@selector(arrangeInFront:)
+		keyEquivalent:@""];
+
+	[window_menu_item setSubmenu:window_menu];
+
+	[window_menu release];
+
+	return window_menu_item;
 }
 
 NSMenuItem *MainMenuCreateHelpMenuItem()
