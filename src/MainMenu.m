@@ -769,7 +769,7 @@ NSMenuItem *MainMenuCreateViewMenuItem()
 	NSMenuItem *enter_full_screen_menu_item = [view_menu
 		addItemWithTitle:@"Enter Full Screen"
 		action:@selector(toggleFullScreen:)
-		keyEquivalent:@"s"];
+		keyEquivalent:@"f"];
 	[enter_full_screen_menu_item
 		setKeyEquivalentModifierMask:
 			NSEventModifierFlagCommand | NSEventModifierFlagControl];
