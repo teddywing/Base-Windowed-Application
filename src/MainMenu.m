@@ -24,6 +24,10 @@ NSMenu *MainMenuCreate()
 	NSMenuItem *format_menu_item = MainMenuCreateFormatMenuItem();
 	[menubar addItem:format_menu_item];
 
+	NSMenuItem *view_menu_item = MainMenuCreateViewMenuItem();
+	[menubar addItem:view_menu_item];
+
+	[view_menu_item release];
 	[format_menu_item release];
 	[edit_menu_item release];
 	[file_menu_item release];
@@ -725,7 +729,48 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 NSMenuItem *MainMenuCreateViewMenuItem()
 {
-	return nil;
+	NSMenuItem *view_menu_item = [[NSMenuItem alloc]
+		initWithTitle:@"View"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *view_menu = [[NSMenu alloc] initWithTitle:@"View"];
+
+	NSMenuItem *show_toolbar_menu_item = [view_menu
+		addItemWithTitle:@"Show Toolbar"
+		action:@selector(toggleToolbarShown:)
+		keyEquivalent:@"t"];
+	[show_toolbar_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagOption];
+
+	[view_menu
+		addItemWithTitle:@"Customize Toolbar…"
+		action:@selector(runToolbarCustomizationPalette:)
+		keyEquivalent:@""];
+
+	[view_menu addItem:[NSMenuItem separatorItem]];
+
+	NSMenuItem *show_sidebar_menu_item = [view_menu
+		addItemWithTitle:@"Show Sidebar"
+		action:@selector(toggleSidebar:)
+		keyEquivalent:@"s"];
+	[show_sidebar_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagControl];
+
+	NSMenuItem *enter_full_screen_menu_item = [view_menu
+		addItemWithTitle:@"Enter Full Screen"
+		action:@selector(toggleFullScreen:)
+		keyEquivalent:@"s"];
+	[enter_full_screen_menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | NSEventModifierFlagControl];
+
+	[view_menu_item setSubmenu:view_menu];
+
+	[view_menu release];
+
+	return view_menu_item;
 }
 
 NSMenuItem *MainMenuCreateWindowMenuItem()
