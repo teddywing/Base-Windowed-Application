@@ -462,162 +462,164 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		addItemWithTitle:@"Font"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *font_menu = [[NSMenu alloc] initWithTitle:@"Font"];
+
+	NSFontManager *font_manager = [NSFontManager sharedFontManager];
+	// NSMenu *font_menu = [[NSMenu alloc] initWithTitle:@"Font"];
 	[format_menu
-		setSubmenu:font_menu
+		setSubmenu:[font_manager fontMenu:YES]
 		forItem:font_menu_item];
 
-	[font_menu
-		addItemWithTitle:@"Show Fonts"
-		action:@selector(orderFrontFontPanel:)
-		keyEquivalent:@"t"];
-	// TODO: target NSFontManager
-
-	NSMenuItem *bold_menu_item = [font_menu
-		addItemWithTitle:@"Bold"
-		action:@selector(addFontTrait:)
-		keyEquivalent:@"b"];
-	[bold_menu_item setTag:NSAddTraitFontAction];
-	// TODO: target NSFontManager
-
-	[font_menu
-		addItemWithTitle:@"Italic"
-		action:@selector(addFontTrait:)
-		keyEquivalent:@"i"];
-	// TODO: target NSFontManager
-
-	[font_menu
-		addItemWithTitle:@"Underline"
-		action:@selector(underline:)
-		keyEquivalent:@"u"];
-
-	[font_menu addItem:[NSMenuItem separatorItem]];
-
-	[font_menu
-		addItemWithTitle:@"Bigger"
-		action:@selector(modifyFont:)
-		keyEquivalent:@"+"];
-	// TODO: target NSFontManager
-
-	[font_menu
-		addItemWithTitle:@"Smaller"
-		action:@selector(modifyFont:)
-		keyEquivalent:@"-"];
-	// TODO: target NSFontManager
-
-	[font_menu addItem:[NSMenuItem separatorItem]];
-
-	NSMenuItem *kern_menu_item = [font_menu
-		addItemWithTitle:@"Kern"
-		action:nil
-		keyEquivalent:@""];
-	NSMenu *kern_menu = [[NSMenu alloc] initWithTitle:@"Kern"];
-	[font_menu
-		setSubmenu:kern_menu
-		forItem:kern_menu_item];
-
-	[kern_menu
-		addItemWithTitle:@"Use Default"
-		action:@selector(useStandardKerning:)
-		keyEquivalent:@""];
-
-	[kern_menu
-		addItemWithTitle:@"Use None"
-		action:@selector(turnOffKerning:)
-		keyEquivalent:@""];
-
-	[kern_menu
-		addItemWithTitle:@"Tighten"
-		action:@selector(tightenKerning:)
-		keyEquivalent:@""];
-
-	[kern_menu
-		addItemWithTitle:@"Loosen"
-		action:@selector(loosenKerning:)
-		keyEquivalent:@""];
-
-	NSMenuItem *ligatures_menu_item = [font_menu
-		addItemWithTitle:@"Ligatures"
-		action:nil
-		keyEquivalent:@""];
-	NSMenu *ligatures_menu = [[NSMenu alloc] initWithTitle:@"Ligatures"];
-	[font_menu
-		setSubmenu:ligatures_menu
-		forItem:ligatures_menu_item];
-
-	[ligatures_menu
-		addItemWithTitle:@"Use Default"
-		action:@selector(useStandardLigatures:)
-		keyEquivalent:@""];
-
-	[ligatures_menu
-		addItemWithTitle:@"Use None"
-		action:@selector(turnOffLigatures:)
-		keyEquivalent:@""];
-
-	[ligatures_menu
-		addItemWithTitle:@"Use All"
-		action:@selector(useAllLigatures:)
-		keyEquivalent:@""];
-
-	NSMenuItem *baseline_menu_item = [font_menu
-		addItemWithTitle:@"Baseline"
-		action:nil
-		keyEquivalent:@""];
-	NSMenu *baseline_menu = [[NSMenu alloc] initWithTitle:@"Baseline"];
-	[font_menu
-		setSubmenu:baseline_menu
-		forItem:baseline_menu_item];
-
-	[baseline_menu
-		addItemWithTitle:@"Use Default"
-		action:@selector(unscript:)
-		keyEquivalent:@""];
-
-	[baseline_menu
-		addItemWithTitle:@"Superscript"
-		action:@selector(superscript:)
-		keyEquivalent:@""];
-
-	[baseline_menu
-		addItemWithTitle:@"Subscript"
-		action:@selector(subscript:)
-		keyEquivalent:@""];
-
-	[baseline_menu
-		addItemWithTitle:@"Raise"
-		action:@selector(raiseBaseline:)
-		keyEquivalent:@""];
-
-	[baseline_menu
-		addItemWithTitle:@"Lower"
-		action:@selector(lowerBaseline:)
-		keyEquivalent:@""];
-
-	[font_menu addItem:[NSMenuItem separatorItem]];
-
-	[font_menu
-		addItemWithTitle:@"Show Colors"
-		action:@selector(orderFrontColorPanel:)
-		keyEquivalent:@"C"];
-
-	[font_menu addItem:[NSMenuItem separatorItem]];
-
-	NSMenuItem *copy_style_menu_item = [font_menu
-		addItemWithTitle:@"Copy Style"
-		action:@selector(copyFont:)
-		keyEquivalent:@"c"];
-	[copy_style_menu_item
-		setKeyEquivalentModifierMask:
-			NSEventModifierFlagCommand | NSEventModifierFlagOption];
-
-	NSMenuItem *paste_style_menu_item = [font_menu
-		addItemWithTitle:@"Paste Style"
-		action:@selector(pasteFont:)
-		keyEquivalent:@"v"];
-	[paste_style_menu_item
-		setKeyEquivalentModifierMask:
-			NSEventModifierFlagCommand | NSEventModifierFlagOption];
+	// [font_menu
+	// 	addItemWithTitle:@"Show Fonts"
+	// 	action:@selector(orderFrontFontPanel:)
+	// 	keyEquivalent:@"t"];
+	// // TODO: target NSFontManager
+    //
+	// NSMenuItem *bold_menu_item = [font_menu
+	// 	addItemWithTitle:@"Bold"
+	// 	action:@selector(addFontTrait:)
+	// 	keyEquivalent:@"b"];
+	// [bold_menu_item setTag:NSAddTraitFontAction];
+	// // TODO: target NSFontManager
+    //
+	// [font_menu
+	// 	addItemWithTitle:@"Italic"
+	// 	action:@selector(addFontTrait:)
+	// 	keyEquivalent:@"i"];
+	// // TODO: target NSFontManager
+    //
+	// [font_menu
+	// 	addItemWithTitle:@"Underline"
+	// 	action:@selector(underline:)
+	// 	keyEquivalent:@"u"];
+    //
+	// [font_menu addItem:[NSMenuItem separatorItem]];
+    //
+	// [font_menu
+	// 	addItemWithTitle:@"Bigger"
+	// 	action:@selector(modifyFont:)
+	// 	keyEquivalent:@"+"];
+	// // TODO: target NSFontManager
+    //
+	// [font_menu
+	// 	addItemWithTitle:@"Smaller"
+	// 	action:@selector(modifyFont:)
+	// 	keyEquivalent:@"-"];
+	// // TODO: target NSFontManager
+    //
+	// [font_menu addItem:[NSMenuItem separatorItem]];
+    //
+	// NSMenuItem *kern_menu_item = [font_menu
+	// 	addItemWithTitle:@"Kern"
+	// 	action:nil
+	// 	keyEquivalent:@""];
+	// NSMenu *kern_menu = [[NSMenu alloc] initWithTitle:@"Kern"];
+	// [font_menu
+	// 	setSubmenu:kern_menu
+	// 	forItem:kern_menu_item];
+    //
+	// [kern_menu
+	// 	addItemWithTitle:@"Use Default"
+	// 	action:@selector(useStandardKerning:)
+	// 	keyEquivalent:@""];
+    //
+	// [kern_menu
+	// 	addItemWithTitle:@"Use None"
+	// 	action:@selector(turnOffKerning:)
+	// 	keyEquivalent:@""];
+    //
+	// [kern_menu
+	// 	addItemWithTitle:@"Tighten"
+	// 	action:@selector(tightenKerning:)
+	// 	keyEquivalent:@""];
+    //
+	// [kern_menu
+	// 	addItemWithTitle:@"Loosen"
+	// 	action:@selector(loosenKerning:)
+	// 	keyEquivalent:@""];
+    //
+	// NSMenuItem *ligatures_menu_item = [font_menu
+	// 	addItemWithTitle:@"Ligatures"
+	// 	action:nil
+	// 	keyEquivalent:@""];
+	// NSMenu *ligatures_menu = [[NSMenu alloc] initWithTitle:@"Ligatures"];
+	// [font_menu
+	// 	setSubmenu:ligatures_menu
+	// 	forItem:ligatures_menu_item];
+    //
+	// [ligatures_menu
+	// 	addItemWithTitle:@"Use Default"
+	// 	action:@selector(useStandardLigatures:)
+	// 	keyEquivalent:@""];
+    //
+	// [ligatures_menu
+	// 	addItemWithTitle:@"Use None"
+	// 	action:@selector(turnOffLigatures:)
+	// 	keyEquivalent:@""];
+    //
+	// [ligatures_menu
+	// 	addItemWithTitle:@"Use All"
+	// 	action:@selector(useAllLigatures:)
+	// 	keyEquivalent:@""];
+    //
+	// NSMenuItem *baseline_menu_item = [font_menu
+	// 	addItemWithTitle:@"Baseline"
+	// 	action:nil
+	// 	keyEquivalent:@""];
+	// NSMenu *baseline_menu = [[NSMenu alloc] initWithTitle:@"Baseline"];
+	// [font_menu
+	// 	setSubmenu:baseline_menu
+	// 	forItem:baseline_menu_item];
+    //
+	// [baseline_menu
+	// 	addItemWithTitle:@"Use Default"
+	// 	action:@selector(unscript:)
+	// 	keyEquivalent:@""];
+    //
+	// [baseline_menu
+	// 	addItemWithTitle:@"Superscript"
+	// 	action:@selector(superscript:)
+	// 	keyEquivalent:@""];
+    //
+	// [baseline_menu
+	// 	addItemWithTitle:@"Subscript"
+	// 	action:@selector(subscript:)
+	// 	keyEquivalent:@""];
+    //
+	// [baseline_menu
+	// 	addItemWithTitle:@"Raise"
+	// 	action:@selector(raiseBaseline:)
+	// 	keyEquivalent:@""];
+    //
+	// [baseline_menu
+	// 	addItemWithTitle:@"Lower"
+	// 	action:@selector(lowerBaseline:)
+	// 	keyEquivalent:@""];
+    //
+	// [font_menu addItem:[NSMenuItem separatorItem]];
+    //
+	// [font_menu
+	// 	addItemWithTitle:@"Show Colors"
+	// 	action:@selector(orderFrontColorPanel:)
+	// 	keyEquivalent:@"C"];
+    //
+	// [font_menu addItem:[NSMenuItem separatorItem]];
+    //
+	// NSMenuItem *copy_style_menu_item = [font_menu
+	// 	addItemWithTitle:@"Copy Style"
+	// 	action:@selector(copyFont:)
+	// 	keyEquivalent:@"c"];
+	// [copy_style_menu_item
+	// 	setKeyEquivalentModifierMask:
+	// 		NSEventModifierFlagCommand | NSEventModifierFlagOption];
+    //
+	// NSMenuItem *paste_style_menu_item = [font_menu
+	// 	addItemWithTitle:@"Paste Style"
+	// 	action:@selector(pasteFont:)
+	// 	keyEquivalent:@"v"];
+	// [paste_style_menu_item
+	// 	setKeyEquivalentModifierMask:
+	// 		NSEventModifierFlagCommand | NSEventModifierFlagOption];
 
 	NSMenuItem *text_menu_item = [format_menu
 		addItemWithTitle:@"Text"
@@ -729,7 +731,7 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	[writing_direction_menu release];
 	[text_menu release];
-	[font_menu release];
+	// [font_menu release];
 	[format_menu release];
 
 	return format_menu_item;

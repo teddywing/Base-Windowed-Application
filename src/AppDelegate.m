@@ -12,6 +12,9 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
+	// NSFontManager *font_manager = [NSFontManager sharedFontManager];
+	// NSLog(@"FontManager: %@", [font_manager fontMenu:YES]);
+
 	NSMenu *menubar = MainMenuCreate();
 	[NSApp setMainMenu:menubar];
 	[menubar release];
