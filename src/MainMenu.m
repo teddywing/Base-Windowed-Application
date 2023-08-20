@@ -30,6 +30,10 @@ NSMenu *MainMenuCreate()
 	NSMenuItem *window_menu_item = MainMenuCreateWindowMenuItem();
 	[menubar addItem:window_menu_item];
 
+	NSMenuItem *help_menu_item = MainMenuCreateHelpMenuItem();
+	[menubar addItem:help_menu_item];
+
+	[help_menu_item release];
 	[window_menu_item release];
 	[view_menu_item release];
 	[format_menu_item release];
@@ -811,5 +815,22 @@ NSMenuItem *MainMenuCreateWindowMenuItem()
 
 NSMenuItem *MainMenuCreateHelpMenuItem()
 {
-	return nil;
+	NSMenuItem *help_menu_item = [[NSMenuItem alloc]
+		initWithTitle:@"Help"
+		action:nil
+		keyEquivalent:@""];
+	NSMenu *help_menu = [[NSMenu alloc] initWithTitle:@"Help"];
+
+	NSString *help_title = [MainMenuGetApplicationName()
+		stringByAppendingString:@" Help"];
+	[help_menu
+		addItemWithTitle:help_title
+		action:@selector(showHelp:)
+		keyEquivalent:@"?"];
+
+	[help_menu_item setSubmenu:help_menu];
+
+	[help_menu release];
+
+	return help_menu_item;
 }
