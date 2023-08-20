@@ -459,33 +459,39 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		addItemWithTitle:@"Show Fonts"
 		action:@selector(orderFrontFontPanel:)
 		keyEquivalent:@"t"];
+	// TODO: target NSFontManager
 
-	[font_menu
+	NSMenuItem *bold_menu_item = [font_menu
 		addItemWithTitle:@"Bold"
-		action:@selector(todo:)
+		action:@selector(addFontTrait:)
 		keyEquivalent:@"b"];
+	[bold_menu_item setTag:NSAddTraitFontAction];
+	// TODO: target NSFontManager
 
 	[font_menu
 		addItemWithTitle:@"Italic"
-		action:@selector(todo:)
+		action:@selector(addFontTrait:)
 		keyEquivalent:@"i"];
+	// TODO: target NSFontManager
 
 	[font_menu
 		addItemWithTitle:@"Underline"
-		action:@selector(todo:)
+		action:@selector(underline:)
 		keyEquivalent:@"u"];
 
 	[font_menu addItem:[NSMenuItem separatorItem]];
 
 	[font_menu
 		addItemWithTitle:@"Bigger"
-		action:@selector(todo:)
+		action:@selector(modifyFont:)
 		keyEquivalent:@"+"];
+	// TODO: target NSFontManager
 
 	[font_menu
 		addItemWithTitle:@"Smaller"
-		action:@selector(todo:)
+		action:@selector(modifyFont:)
 		keyEquivalent:@"-"];
+	// TODO: target NSFontManager
 
 	[font_menu addItem:[NSMenuItem separatorItem]];
 
@@ -500,22 +506,22 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	[kern_menu
 		addItemWithTitle:@"Use Default"
-		action:@selector(todo:)
+		action:@selector(useStandardKerning:)
 		keyEquivalent:@""];
 
 	[kern_menu
 		addItemWithTitle:@"Use None"
-		action:@selector(todo:)
+		action:@selector(turnOffKerning:)
 		keyEquivalent:@""];
 
 	[kern_menu
 		addItemWithTitle:@"Tighten"
-		action:@selector(todo:)
+		action:@selector(tightenKerning:)
 		keyEquivalent:@""];
 
 	[kern_menu
 		addItemWithTitle:@"Loosen"
-		action:@selector(todo:)
+		action:@selector(loosenKerning:)
 		keyEquivalent:@""];
 
 	NSMenuItem *ligatures_menu_item = [font_menu
@@ -529,17 +535,17 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	[ligatures_menu
 		addItemWithTitle:@"Use Default"
-		action:@selector(todo:)
+		action:@selector(useStandardLigatures:)
 		keyEquivalent:@""];
 
 	[ligatures_menu
 		addItemWithTitle:@"Use None"
-		action:@selector(todo:)
+		action:@selector(turnOffLigatures:)
 		keyEquivalent:@""];
 
 	[ligatures_menu
 		addItemWithTitle:@"Use All"
-		action:@selector(todo:)
+		action:@selector(useAllLigatures:)
 		keyEquivalent:@""];
 
 	NSMenuItem *baseline_menu_item = [font_menu
@@ -553,41 +559,41 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	[baseline_menu
 		addItemWithTitle:@"Use Default"
-		action:@selector(todo:)
+		action:@selector(unscript:)
 		keyEquivalent:@""];
 
 	[baseline_menu
 		addItemWithTitle:@"Superscript"
-		action:@selector(todo:)
+		action:@selector(superscript:)
 		keyEquivalent:@""];
 
 	[baseline_menu
 		addItemWithTitle:@"Subscript"
-		action:@selector(todo:)
+		action:@selector(subscript:)
 		keyEquivalent:@""];
 
 	[baseline_menu
 		addItemWithTitle:@"Raise"
-		action:@selector(todo:)
+		action:@selector(raiseBaseline:)
 		keyEquivalent:@""];
 
 	[baseline_menu
 		addItemWithTitle:@"Lower"
-		action:@selector(todo:)
+		action:@selector(lowerBaseline:)
 		keyEquivalent:@""];
 
 	[font_menu addItem:[NSMenuItem separatorItem]];
 
 	[font_menu
 		addItemWithTitle:@"Show Colors"
-		action:@selector(todo:)
+		action:@selector(orderFrontColorPanel:)
 		keyEquivalent:@"C"];
 
 	[font_menu addItem:[NSMenuItem separatorItem]];
 
 	NSMenuItem *copy_style_menu_item = [font_menu
 		addItemWithTitle:@"Copy Style"
-		action:@selector(todo:)
+		action:@selector(copyFont:)
 		keyEquivalent:@"c"];
 	[copy_style_menu_item
 		setKeyEquivalentModifierMask:
@@ -595,7 +601,7 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	NSMenuItem *paste_style_menu_item = [font_menu
 		addItemWithTitle:@"Paste Style"
-		action:@selector(todo:)
+		action:@selector(pasteFont:)
 		keyEquivalent:@"v"];
 	[paste_style_menu_item
 		setKeyEquivalentModifierMask:
@@ -612,22 +618,22 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	[text_menu
 		addItemWithTitle:@"Align Left"
-		action:@selector(orderFrontFontPanel:)
+		action:@selector(alignLeft:)
 		keyEquivalent:@"{"];
 
 	[text_menu
 		addItemWithTitle:@"Center"
-		action:@selector(orderFrontFontPanel:)
+		action:@selector(alignCenter:)
 		keyEquivalent:@"|"];
 
 	[text_menu
 		addItemWithTitle:@"Justify"
-		action:@selector(orderFrontFontPanel:)
+		action:@selector(alignJustified:)
 		keyEquivalent:@""];
 
 	[text_menu
 		addItemWithTitle:@"Align Right"
-		action:@selector(orderFrontFontPanel:)
+		action:@selector(alignRight:)
 		keyEquivalent:@"}"];
 
 	[text_menu addItem:[NSMenuItem separatorItem]];
@@ -648,18 +654,18 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Default"
-		action:nil
+		addItemWithTitle:@"\tDefault"
+		action:@selector(makeBaseWritingDirectionNatural:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Left to Right"
-		action:nil
+		addItemWithTitle:@"\tLeft to Right"
+		action:@selector(makeBaseWritingDirectionLeftToRight:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Right to Left"
-		action:nil
+		addItemWithTitle:@"\tRight to Left"
+		action:@selector(makeBaseWritingDirectionRightToLeft:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu addItem:[NSMenuItem separatorItem]];
@@ -670,30 +676,30 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Default"
-		action:nil
+		addItemWithTitle:@"\tDefault"
+		action:@selector(makeTextWritingDirectionNatural:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Left to Right"
-		action:nil
+		addItemWithTitle:@"\tLeft to Right"
+		action:@selector(makeTextWritingDirectionLeftToRight:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Right to Left"
-		action:nil
+		addItemWithTitle:@"\tRight to Left"
+		action:@selector(makeTextWritingDirectionRightToLeft:)
 		keyEquivalent:@""];
 
 	[text_menu addItem:[NSMenuItem separatorItem]];
 
 	[text_menu
 		addItemWithTitle:@"Show Ruler"
-		action:nil
+		action:@selector(toggleRuler:)
 		keyEquivalent:@""];
 
 	NSMenuItem *copy_ruler_menu_item = [text_menu
 		addItemWithTitle:@"Copy Ruler"
-		action:nil
+		action:@selector(copyRuler:)
 		keyEquivalent:@"c"];
 	[copy_ruler_menu_item
 		setKeyEquivalentModifierMask:
@@ -701,7 +707,7 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	NSMenuItem *paste_ruler_menu_item = [text_menu
 		addItemWithTitle:@"Paste Ruler"
-		action:nil
+		action:@selector(pasteRuler:)
 		keyEquivalent:@"v"];
 	[paste_ruler_menu_item
 		setKeyEquivalentModifierMask:
