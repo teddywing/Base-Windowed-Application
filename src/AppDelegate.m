@@ -34,6 +34,7 @@
 	_text_view = [[NSTextView alloc]
 		initWithFrame:NSMakeRect(0, 0, 400, 400)];
 	[[_window contentView] addSubview:_text_view];
+	// [_window setContentView:_text_view];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
