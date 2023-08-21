@@ -211,7 +211,6 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 		keyEquivalent:@""];
 	NSMenu *edit_menu = [[NSMenu alloc] initWithTitle:@"Edit"];
 
-	// TODO: Undo and redo don't work.
 	[edit_menu
 		addItemWithTitle:@"Undo"
 		action:@selector(undo:)
