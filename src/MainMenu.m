@@ -8,9 +8,6 @@ NSMenuItem *MainMenuCreateViewMenuItem();
 NSMenuItem *MainMenuCreateWindowMenuItem();
 NSMenuItem *MainMenuCreateHelpMenuItem();
 
-void MainMenuFixFontMenuKeyEquivalentModifierMask(NSMenu *font_menu);
-BOOL MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(NSMenuItem *menu_item);
-
 NSMenu *MainMenuCreate()
 {
 	NSMenu *menubar = [[NSMenu alloc] init];
@@ -454,6 +451,44 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	return edit_menu_item;
 }
 
+BOOL MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(NSMenuItem *menu_item)
+{
+	if (!menu_item) {
+		return NO;
+	}
+
+	if (
+		[menu_item keyEquivalentModifierMask]
+		& NSEventModifierFlagCommand
+	) {
+		return YES;
+	}
+
+	// NSLog(@"MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand mask: %lu", [menu_item keyEquivalentModifierMask]);
+	// NSLog(@"MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand NO");
+	return NO;
+}
+
+void MainMenuFixFontMenuKeyEquivalentModifierMask(NSMenu *font_menu)
+{
+	NSMenuItem *show_colors_menu_item = [font_menu itemWithTitle:@"Show Colors"];
+
+	if (
+		!MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(
+			show_colors_menu_item
+		)
+	) {
+		// [show_colors_menu_item setKeyEquivalent:@"C"];
+		// NSLog(@"colors: %@", [show_colors_menu_item keyEquivalent]);
+		// [show_colors_menu_item setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
+		[show_colors_menu_item
+			setKeyEquivalentModifierMask:
+				NSEventModifierFlagCommand
+				| [show_colors_menu_item keyEquivalentModifierMask]];
+		// NSLog(@"show_colors_menu_item mask: %lu", [show_colors_menu_item keyEquivalentModifierMask]);
+	}
+}
+
 NSMenuItem *MainMenuCreateFormatMenuItem()
 {
 	NSMenuItem *format_menu_item = [[NSMenuItem alloc]
@@ -744,44 +779,6 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 	[format_menu release];
 
 	return format_menu_item;
-}
-
-void MainMenuFixFontMenuKeyEquivalentModifierMask(NSMenu *font_menu)
-{
-	NSMenuItem *show_colors_menu_item = [font_menu itemWithTitle:@"Show Colors"];
-
-	if (
-		!MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(
-			show_colors_menu_item
-		)
-	) {
-		// [show_colors_menu_item setKeyEquivalent:@"C"];
-		// NSLog(@"colors: %@", [show_colors_menu_item keyEquivalent]);
-		// [show_colors_menu_item setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
-		[show_colors_menu_item
-			setKeyEquivalentModifierMask:
-				NSEventModifierFlagCommand
-				| [show_colors_menu_item keyEquivalentModifierMask]];
-		// NSLog(@"show_colors_menu_item mask: %lu", [show_colors_menu_item keyEquivalentModifierMask]);
-	}
-}
-
-BOOL MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(NSMenuItem *menu_item)
-{
-	if (!menu_item) {
-		return NO;
-	}
-
-	if (
-		[menu_item keyEquivalentModifierMask]
-		& NSEventModifierFlagCommand
-	) {
-		return YES;
-	}
-
-	// NSLog(@"MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand mask: %lu", [menu_item keyEquivalentModifierMask]);
-	// NSLog(@"MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand NO");
-	return NO;
 }
 
 NSMenuItem *MainMenuCreateViewMenuItem()
