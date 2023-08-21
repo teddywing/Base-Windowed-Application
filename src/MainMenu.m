@@ -465,8 +465,11 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 
 	NSFontManager *font_manager = [NSFontManager sharedFontManager];
 	// NSMenu *font_menu = [[NSMenu alloc] initWithTitle:@"Font"];
+	NSMenu *font_menu = [font_manager fontMenu:YES];
+	NSLog(@"Font menu: %@", font_menu);
+	NSLog(@"Font menu: %lu", [[font_menu itemAtIndex:14] keyEquivalentModifierMask] & NSEventModifierFlagCommand);
 	[format_menu
-		setSubmenu:[font_manager fontMenu:YES]
+		setSubmenu:font_menu
 		forItem:font_menu_item];
 
 	// [font_menu
