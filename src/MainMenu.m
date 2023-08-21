@@ -464,29 +464,29 @@ BOOL MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(NSMenuItem *menu_item
 		return YES;
 	}
 
-	// NSLog(@"MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand mask: %lu", [menu_item keyEquivalentModifierMask]);
-	// NSLog(@"MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand NO");
 	return NO;
 }
 
+void MainMenuAddMissingCommandModifier(NSMenuItem *menu_item)
+{
+	if (MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(menu_item)) {
+		return;
+	}
+
+	[menu_item
+		setKeyEquivalentModifierMask:
+			NSEventModifierFlagCommand | [menu_item keyEquivalentModifierMask]];
+}
+
+// On Mac OS X 10.15, some menu items did not include the Apple key in the
+// Font menu item's modifier mask.
+//
+// Fix this by adding the modifier if necessary.
 void MainMenuFixFontMenuKeyEquivalentModifierMask(NSMenu *font_menu)
 {
-	NSMenuItem *show_colors_menu_item = [font_menu itemWithTitle:@"Show Colors"];
-
-	if (
-		!MainMenuNSMenuItemHasKeyEquivalentModifierMaskCommand(
-			show_colors_menu_item
-		)
-	) {
-		// [show_colors_menu_item setKeyEquivalent:@"C"];
-		// NSLog(@"colors: %@", [show_colors_menu_item keyEquivalent]);
-		// [show_colors_menu_item setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
-		[show_colors_menu_item
-			setKeyEquivalentModifierMask:
-				NSEventModifierFlagCommand
-				| [show_colors_menu_item keyEquivalentModifierMask]];
-		// NSLog(@"show_colors_menu_item mask: %lu", [show_colors_menu_item keyEquivalentModifierMask]);
-	}
+	MainMenuAddMissingCommandModifier([font_menu itemWithTitle:@"Show Colors"]);
+	MainMenuAddMissingCommandModifier([font_menu itemWithTitle:@"Copy Style"]);
+	MainMenuAddMissingCommandModifier([font_menu itemWithTitle:@"Paste Style"]);
 }
 
 NSMenuItem *MainMenuCreateFormatMenuItem()
@@ -503,10 +503,7 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		keyEquivalent:@""];
 
 	NSFontManager *font_manager = [NSFontManager sharedFontManager];
-	// NSMenu *font_menu = [[NSMenu alloc] initWithTitle:@"Font"];
 	NSMenu *font_menu = [font_manager fontMenu:YES];
-	NSLog(@"Font menu: %@", font_menu);
-	NSLog(@"Font menu: %lu", [[font_menu itemAtIndex:14] keyEquivalentModifierMask] & NSEventModifierFlagCommand);
 	[format_menu
 		setSubmenu:font_menu
 		forItem:font_menu_item];
