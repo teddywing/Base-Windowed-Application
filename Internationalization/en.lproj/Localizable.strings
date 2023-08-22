@@ -8,7 +8,7 @@
 "\tRight to Left" = "\tRight to Left";
 
 /* About menu item. */
-"About" = "About";
+"About %@" = "About %@";
 
 /* Align Left menu item. */
 "Align Left" = "Align Left";
@@ -94,8 +94,11 @@
 /* Help menu title. */
 "Help" = "Help";
 
+/* Help menu item. */
+"%@ Help" = "%@ Help";
+
 /* Hide menu item. */
-"Hide" = "Hide";
+"Hide %@" = "Hide %@";
 
 /* Hide Others menu item. */
 "Hide Others" = "Hide Others";
@@ -146,7 +149,7 @@
 "Print…" = "Print…";
 
 /* Quit menu item. */
-"Quit" = "Quit";
+"Quit %@" = "Quit %@";
 
 /* Redo menu item. */
 "Redo" = "Redo";

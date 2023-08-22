@@ -69,9 +69,9 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 			@"Application menu title."
 		)];
 
-	NSString *about_title = [[NSLocalizedString(@"About", @"About menu item.")
-		stringByAppendingString:@" "]
-		stringByAppendingString:MainMenuGetApplicationName()];
+	NSString *about_title = [NSString
+		stringWithFormat:NSLocalizedString(@"About %@", @"About menu item."),
+		MainMenuGetApplicationName()];
 	NSMenuItem *about_menu_item = [application_menu
 		addItemWithTitle:about_title
 		action:@selector(orderFrontStandardAboutPanel:)
@@ -106,9 +106,9 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
-	NSString *hide_title = [[NSLocalizedString(@"Hide", @"Hide menu item.")
-		stringByAppendingString:@" "]
-		stringByAppendingString:MainMenuGetApplicationName()];
+	NSString *hide_title = [NSString
+		stringWithFormat:NSLocalizedString(@"Hide %@", @"Hide menu item."),
+		MainMenuGetApplicationName()];
 	NSMenuItem *hide_menu_item = [application_menu
 		addItemWithTitle:hide_title
 		action:@selector(hide:)
@@ -137,9 +137,9 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
-	NSString *quit_title = [[NSLocalizedString(@"Quit", @"Quit menu item.")
-		stringByAppendingString:@" "]
-		stringByAppendingString:MainMenuGetApplicationName()];
+	NSString *quit_title = [NSString
+		stringWithFormat:NSLocalizedString(@"Quit %@", @"Quit menu item."),
+		MainMenuGetApplicationName()];
 	NSMenuItem *quit_menu_item = [application_menu
 		addItemWithTitle:quit_title
 		action:@selector(terminate:)
@@ -973,9 +973,9 @@ NSMenuItem *MainMenuCreateHelpMenuItem()
 			@"Help menu title."
 		)];
 
-	NSString *help_title = [[MainMenuGetApplicationName()
-		stringByAppendingString:@" "]
-		stringByAppendingString:NSLocalizedString(@"Help", @"Help menu item.")];
+	NSString *help_title = [NSString
+		stringWithFormat:NSLocalizedString(@"%@ Help", @"Help menu item."),
+		MainMenuGetApplicationName()];
 	[help_menu
 		addItemWithTitle:help_title
 		action:@selector(showHelp:)
