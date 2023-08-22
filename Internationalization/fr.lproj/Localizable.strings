@@ -1,0 +1,234 @@
+/* Default menu item. */
+"\tDefault" = "\tPar défaut";
+
+/* Left to Right menu item. */
+"\tLeft to Right" = "\tDe gauche à droite";
+
+/* Right to Left menu item. */
+"\tRight to Left" = "\tDe droite à gauche";
+
+/* Align Left menu item. */
+"Align Left" = "Aligner à gauche";
+
+/* Align Right menu item. */
+"Align Right" = "Aligner à droite";
+
+/* Application menu title. */
+"Application" = "Application";
+
+/* Bring All to Front menu item. */
+"Bring All to Front" = "Tout ramener au premier plan";
+
+/* Capitalize menu item. */
+"Capitalize" = "1re lettre majuscule";
+
+/* Center menu item. */
+"Center" = "Centrer";
+
+/* Check Document Now menu item. */
+"Check Document Now" = "Vérifier le document maintenant";
+
+/* Check Grammar With Spelling menu item. */
+"Check Grammar With Spelling" = "Vérifier la grammaire et l’orthographe";
+
+/* Check Spelling While Typing menu item. */
+"Check Spelling While Typing" = "Vérifier l’orthographe lors de la saisie";
+
+/* Close menu item. */
+"Close" = "Fermer";
+
+/* Copy menu item. */
+"Copy" = "Copier";
+
+/* Copy Ruler menu item. */
+"Copy Ruler" = "Copier la règle";
+
+/* Correct Spelling Automatically menu item. */
+"Correct Spelling Automatically" = "Corriger l’orthographe automatiquement";
+
+/* Customize Toolbar… menu item. */
+"Customize Toolbar…" = "Personnaliser la barre d’outils";
+
+/* Cut menu item. */
+"Cut" = "Couper";
+
+/* Data Detectors menu item. */
+"Data Detectors" = "Détection de données";
+
+/* Delete menu item. */
+"Delete" = "Supprimer";
+
+/* Edit menu title. */
+"Edit" = "Modifier";
+
+/* Enter Full Screen menu item. */
+"Enter Full Screen" = "Activer le mode plein écran";
+
+/* File menu title. */
+"File" = "Fichier";
+
+/* Find menu item. */
+"Find" = "Recherche";
+
+/* Find and Replace… menu item. */
+"Find and Replace…" = "Rechercher et remplacer…";
+
+/* Find Next menu item. */
+"Find Next" = "Rechercher suivant";
+
+/* Find Previous menu item. */
+"Find Previous" = "Rechercher le précédent";
+
+/* Find… menu item. */
+"Find…" = "Rechercher…";
+
+/* Font menu item. */
+"Font" = "Police";
+
+/* Format menu title. */
+"Format" = "Format";
+
+/* Help menu title. */
+"Help" = "Aide";
+
+/* Hide Others menu item. */
+"Hide Others" = "Masquer les autres";
+
+/* Jump to Selection menu item. */
+"Jump to Selection" = "Aller à la sélection";
+
+/* Justify menu item. */
+"Justify" = "Justifier";
+
+/* Make Lower Case menu item. */
+"Make Lower Case" = "Mettre en minuscule";
+
+/* Make Upper Case menu item. */
+"Make Upper Case" = "Mettre en majuscule";
+
+/* Minimize menu item. */
+"Minimize" = "Placer dans le Dock";
+
+/* New menu item. */
+"New" = "Nouveau";
+
+/* Open Recent menu item. */
+"Open Recent" = "Ouvrir l’élément récent";
+
+/* Open… menu item. */
+"Open…" = "Ouvrir…";
+
+/* Page Setup… menu item. */
+"Page Setup…" = "Format d’impression…";
+
+/* Paragraph menu item. */
+"Paragraph" = "Paragraphe";
+
+/* Paste menu item. */
+"Paste" = "Coller";
+
+/* Paste and Match Style menu item. */
+"Paste and Match Style" = "Coller et adapter le style";
+
+/* Paste Ruler menu item. */
+"Paste Ruler" = "Coller la règle";
+
+/* Preferences menu item. */
+"Preferences" = "Préférences";
+
+/* Print… menu item. */
+"Print…" = "Imprimer…";
+
+/* Redo menu item. */
+"Redo" = "Rétablir";
+
+/* Revert to Saved menu item. */
+"Revert to Saved" = "Revenir à la version enregistrée";
+
+/* Save As… menu item. */
+"Save As…" = "Enregistrer sous…";
+
+/* Save… menu item. */
+"Save…" = "Enregistrer…";
+
+/* Select All menu item. */
+"Select All" = "Tout sélectionner";
+
+/* Selection menu item. */
+"Selection" = "Sélection";
+
+/* Services menu title. */
+"Services" = "Services";
+
+/* Show All menu item. */
+"Show All" = "Tout afficher";
+
+/* Show Ruler menu item. */
+"Show Ruler" = "Afficher la règle";
+
+/* Show Sidebar menu item. */
+"Show Sidebar" = "Afficher la barre latérale";
+
+/* Show Spelling and Grammar menu item. */
+"Show Spelling and Grammar" = "Afficher l’orthographe et la grammaire";
+
+/* Show Substitutions menu item. */
+"Show Substitutions" = "Afficher les substitutions";
+
+/* Show Toolbar menu item. */
+"Show Toolbar" = "Afficher la barre d’outils";
+
+/* Smart Copy/Paste menu item. */
+"Smart Copy/Paste" = "Copier-coller intelligent";
+
+/* Smart Dashes menu item. */
+"Smart Dashes" = "Tirets intelligents";
+
+/* Smart Links menu item. */
+"Smart Links" = "Liens intelligents";
+
+/* Smart Quotes menu item. */
+"Smart Quotes" = "Guillemets courbes";
+
+/* Speech menu item. */
+"Speech" = "Parole";
+
+/* Spelling and Grammar menu item. */
+"Spelling and Grammar" = "Orthographe et grammaire";
+
+/* Start Speaking menu item. */
+"Start Speaking" = "Commencer la lecture";
+
+/* Stop Speaking menu item. */
+"Stop Speaking" = "Arrêter la lecture";
+
+/* Substitutions menu item. */
+"Substitutions" = "Substitutions";
+
+/* Text menu item. */
+"Text" = "Texte";
+
+/* Text Replacement menu item. */
+"Text Replacement" = "Remplacement de texte";
+
+/* Transformations menu item. */
+"Transformations" = "Transformations";
+
+/* Undo menu item. */
+"Undo" = "Annuler";
+
+/* Use Selection for Find menu item. */
+"Use Selection for Find" = "Rechercher la sélection";
+
+/* View menu title. */
+"View" = "Présentation";
+
+/* Window menu title. */
+"Window" = "Fenêtre";
+
+/* Writing Direction menu item. */
+"Writing Direction" = "Sens de l’écriture";
+
+/* Zoom menu item. */
+"Zoom" = "Réduire/agrandir";
+
