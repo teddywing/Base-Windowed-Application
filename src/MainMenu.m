@@ -58,7 +58,6 @@ NSString *MainMenuGetApplicationName()
 
 NSMenuItem *MainMenuCreateApplicationMenuItem()
 {
-	// TODO: Localize
 	NSMenuItem *application_menu_item = [[NSMenuItem alloc]
 		initWithTitle:@"Application"
 		action:nil
