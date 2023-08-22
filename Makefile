@@ -30,6 +30,10 @@ genstrings: Base.lproj/Localizable.strings
 Base.lproj/Localizable.strings: $(SOURCES)
 	genstrings -o Base.lproj $^
 
+	mv $@ "$@.utf16"
+	iconv --from-code=UTF-16 --to-code=UTF-8 "$@.utf16" > $@
+	rm "$@.utf16"
+
 
 .PHONY: clean
 clean:
