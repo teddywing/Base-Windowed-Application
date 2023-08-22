@@ -7,6 +7,9 @@
 /* Right to Left menu item. */
 "\tRight to Left" = "\tRight to Left";
 
+/* About menu item. */
+"About" = "About";
+
 /* Align Left menu item. */
 "Align Left" = "Align Left";
 
@@ -91,6 +94,9 @@
 /* Help menu title. */
 "Help" = "Help";
 
+/* Hide menu item. */
+"Hide" = "Hide";
+
 /* Hide Others menu item. */
 "Hide Others" = "Hide Others";
 
@@ -138,6 +144,9 @@
 
 /* Print… menu item. */
 "Print…" = "Print…";
+
+/* Quit menu item. */
+"Quit" = "Quit";
 
 /* Redo menu item. */
 "Redo" = "Redo";

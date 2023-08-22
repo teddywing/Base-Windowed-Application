@@ -69,7 +69,8 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 			@"Application menu title."
 		)];
 
-	NSString *about_title = [@"About "
+	NSString *about_title = [[NSLocalizedString(@"About", @"About menu item.")
+		stringByAppendingString:@" "]
 		stringByAppendingString:MainMenuGetApplicationName()];
 	NSMenuItem *about_menu_item = [application_menu
 		addItemWithTitle:about_title
@@ -105,7 +106,8 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
-	NSString *hide_title = [@"Hide "
+	NSString *hide_title = [[NSLocalizedString(@"Hide", @"Hide menu item.")
+		stringByAppendingString:@" "]
 		stringByAppendingString:MainMenuGetApplicationName()];
 	NSMenuItem *hide_menu_item = [application_menu
 		addItemWithTitle:hide_title
@@ -135,7 +137,8 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
-	NSString *quit_title = [@"Quit "
+	NSString *quit_title = [[NSLocalizedString(@"Quit", @"Quit menu item.")
+		stringByAppendingString:@" "]
 		stringByAppendingString:MainMenuGetApplicationName()];
 	NSMenuItem *quit_menu_item = [application_menu
 		addItemWithTitle:quit_title
@@ -970,8 +973,9 @@ NSMenuItem *MainMenuCreateHelpMenuItem()
 			@"Help menu title."
 		)];
 
-	NSString *help_title = [MainMenuGetApplicationName()
-		stringByAppendingString:@" Help"];
+	NSString *help_title = [[MainMenuGetApplicationName()
+		stringByAppendingString:@" "]
+		stringByAppendingString:NSLocalizedString(@"Help", @"Help menu item.")];
 	[help_menu
 		addItemWithTitle:help_title
 		action:@selector(showHelp:)
