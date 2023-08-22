@@ -23,6 +23,14 @@ $(PRODUCT): $(OBJECTS) | build
 build:
 	mkdir -p build
 
+
+.PHONY: genstrings
+genstrings: Base.lproj/Localizable.strings
+
+Base.lproj/Localizable.strings: $(SOURCES)
+	genstrings -o Base.lproj $^
+
+
 .PHONY: clean
 clean:
 	rm $(OBJECTS)
