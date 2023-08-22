@@ -63,7 +63,11 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		initWithTitle:@"Application"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *application_menu = [[NSMenu alloc] initWithTitle:@"Application"];
+	NSMenu *application_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"Application",
+			@"Application menu title."
+		)];
 
 	NSString *about_title = [@"About "
 		stringByAppendingString:MainMenuGetApplicationName()];
@@ -76,7 +80,10 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 	[application_menu addItem:[NSMenuItem separatorItem]];
 
 	[application_menu
-		addItemWithTitle:@"Preferences"
+		addItemWithTitle:NSLocalizedString(
+			@"Preferences",
+			@"Preferences menu item."
+		)
 		action:nil
 		keyEquivalent:@","];
 
@@ -86,7 +93,11 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		addItemWithTitle:@"Services"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *services_menu = [[NSMenu alloc] initWithTitle:@"Services"];
+	NSMenu *services_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"Services",
+			@"Services menu title."
+		)];
 	[application_menu
 		setSubmenu:services_menu
 		forItem:services_menu_item];
@@ -103,7 +114,10 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 	[hide_menu_item setTarget:NSApp];
 
 	NSMenuItem *hide_others_menu_item = [application_menu
-		addItemWithTitle:@"Hide Others"
+		addItemWithTitle:NSLocalizedString(
+			@"Hide Others",
+			@"Hide Others menu item."
+		)
 		action:@selector(hideOtherApplications:)
 		keyEquivalent:@"h"];
 	[hide_others_menu_item setTarget:NSApp];
@@ -112,7 +126,10 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 			NSEventModifierFlagCommand | NSEventModifierFlagOption];
 
 	NSMenuItem *show_all_menu_item = [application_menu
-		addItemWithTitle:@"Show All"
+		addItemWithTitle:NSLocalizedString(
+			@"Show All",
+			@"Show All menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
 
@@ -140,38 +157,60 @@ NSMenuItem *MainMenuCreateFileMenuItem()
 		initWithTitle:@"File"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *file_menu = [[NSMenu alloc] initWithTitle:@"File"];
+	NSMenu *file_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"File",
+			@"File menu title."
+		)];
 
 	[file_menu
-		addItemWithTitle:@"New"
+		addItemWithTitle:NSLocalizedString(
+			@"New",
+			@"New menu item."
+		)
 		action:@selector(newDocument:)
 		keyEquivalent:@"n"];
 
 	[file_menu
-		addItemWithTitle:@"Open…"
+		addItemWithTitle:NSLocalizedString(
+			@"Open…",
+			@"Open… menu item."
+		)
 		action:@selector(openDocument:)
 		keyEquivalent:@"o"];
 
 	// TODO Add a real "Open Recent" menu.
 	[file_menu
-		addItemWithTitle:@"Open Recent"
+		addItemWithTitle:NSLocalizedString(
+			@"Open Recent",
+			@"Open Recent menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
 
 	[file_menu addItem:[NSMenuItem separatorItem]];
 
 	[file_menu
-		addItemWithTitle:@"Close"
+		addItemWithTitle:NSLocalizedString(
+			@"Close",
+			@"Close menu item."
+		)
 		action:@selector(performClose:)
 		keyEquivalent:@"w"];
 
 	[file_menu
-		addItemWithTitle:@"Save…"
+		addItemWithTitle:NSLocalizedString(
+			@"Save…",
+			@"Save… menu item."
+		)
 		action:@selector(saveDocument:)
 		keyEquivalent:@"s"];
 
 	NSMenuItem *save_as_menu_item = [file_menu
-		addItemWithTitle:@"Save As…"
+		addItemWithTitle:NSLocalizedString(
+			@"Save As…",
+			@"Save As… menu item."
+		)
 		action:@selector(saveDocumentAs:)
 		keyEquivalent:@"s"];
 	[save_as_menu_item
@@ -179,14 +218,20 @@ NSMenuItem *MainMenuCreateFileMenuItem()
 			NSEventModifierFlagCommand | NSEventModifierFlagShift];
 
 	[file_menu
-		addItemWithTitle:@"Revert to Saved"
+		addItemWithTitle:NSLocalizedString(
+			@"Revert to Saved",
+			@"Revert to Saved menu item."
+		)
 		action:@selector(revertDocumentToSaved:)
 		keyEquivalent:@"r"];
 
 	[file_menu addItem:[NSMenuItem separatorItem]];
 
 	NSMenuItem *page_setup_menu_item = [file_menu
-		addItemWithTitle:@"Page Setup…"
+		addItemWithTitle:NSLocalizedString(
+			@"Page Setup…",
+			@"Page Setup… menu item."
+		)
 		action:@selector(runPageLayout:)
 		keyEquivalent:@"p"];
 	[page_setup_menu_item
@@ -194,7 +239,10 @@ NSMenuItem *MainMenuCreateFileMenuItem()
 			NSEventModifierFlagCommand | NSEventModifierFlagShift];
 
 	[file_menu
-		addItemWithTitle:@"Print…"
+		addItemWithTitle:NSLocalizedString(
+			@"Print…",
+			@"Print… menu item."
+		)
 		action:@selector(print:)
 		keyEquivalent:@"p"];
 
@@ -211,37 +259,59 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 		initWithTitle:@"Edit"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *edit_menu = [[NSMenu alloc] initWithTitle:@"Edit"];
+	NSMenu *edit_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"Edit",
+			@"Edit menu title."
+		)];
 
 	[edit_menu
-		addItemWithTitle:@"Undo"
+		addItemWithTitle:NSLocalizedString(
+			@"Undo",
+			@"Undo menu item."
+		)
 		action:@selector(undo:)
 		keyEquivalent:@"z"];
 
 	[edit_menu
-		addItemWithTitle:@"Redo"
+		addItemWithTitle:NSLocalizedString(
+			@"Redo",
+			@"Redo menu item."
+		)
 		action:@selector(redo:)
 		keyEquivalent:@"Z"];
 
 	[edit_menu addItem:[NSMenuItem separatorItem]];
 
 	[edit_menu
-		addItemWithTitle:@"Cut"
+		addItemWithTitle:NSLocalizedString(
+			@"Cut",
+			@"Cut menu item."
+		)
 		action:@selector(cut:)
 		keyEquivalent:@"x"];
 
 	[edit_menu
-		addItemWithTitle:@"Copy"
+		addItemWithTitle:NSLocalizedString(
+			@"Copy",
+			@"Copy menu item."
+		)
 		action:@selector(copy:)
 		keyEquivalent:@"c"];
 
 	[edit_menu
-		addItemWithTitle:@"Paste"
+		addItemWithTitle:NSLocalizedString(
+			@"Paste",
+			@"Paste menu item."
+		)
 		action:@selector(paste:)
 		keyEquivalent:@"v"];
 
 	NSMenuItem *paste_and_match_style_menu_item = [edit_menu
-		addItemWithTitle:@"Paste and Match Style"
+		addItemWithTitle:NSLocalizedString(
+			@"Paste and Match Style",
+			@"Paste and Match Style menu item."
+		)
 		action:@selector(pasteAsPlainText:)
 		keyEquivalent:@"V"];
 	[paste_and_match_style_menu_item
@@ -249,12 +319,18 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 			NSEventModifierFlagCommand | NSEventModifierFlagOption];
 
 	[edit_menu
-		addItemWithTitle:@"Delete"
+		addItemWithTitle:NSLocalizedString(
+			@"Delete",
+			@"Delete menu item."
+		)
 		action:@selector(delete:)
 		keyEquivalent:@""];
 
 	[edit_menu
-		addItemWithTitle:@"Select All"
+		addItemWithTitle:NSLocalizedString(
+			@"Select All",
+			@"Select All menu item."
+		)
 		action:@selector(selectAll:)
 		keyEquivalent:@"a"];
 
@@ -263,16 +339,23 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	// Find menu.
 	// TODO: Find items don't appear to work except for D-j
 	NSMenuItem *find_menu_item = [edit_menu
-		addItemWithTitle:@"Find"
+		addItemWithTitle:NSLocalizedString(
+			@"Find",
+			@"Find menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *find_menu = [[NSMenu alloc] initWithTitle:@"Find"];
+	NSMenu *find_menu = [[NSMenu alloc]
+		initWithTitle:@"Find"];
 	[edit_menu
 		setSubmenu:find_menu
 		forItem:find_menu_item];
 
 	NSMenuItem *find_ellipsis_menu_item = [find_menu
-		addItemWithTitle:@"Find…"
+		addItemWithTitle:NSLocalizedString(
+			@"Find…",
+			@"Find… menu item."
+		)
 		action:@selector(performFindPanelAction:)
 		// action:@selector(performTextFinderAction:)
 		keyEquivalent:@"f"];
@@ -281,7 +364,10 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	// NSFindPanelActionShowFindPanel ?
 
 	NSMenuItem *find_and_replace_menu_item = [find_menu
-		addItemWithTitle:@"Find and Replace…"
+		addItemWithTitle:NSLocalizedString(
+			@"Find and Replace…",
+			@"Find and Replace… menu item."
+		)
 		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"f"];
 	[find_and_replace_menu_item
@@ -290,153 +376,232 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	[find_and_replace_menu_item setTag:NSTextFinderActionShowReplaceInterface];
 
 	NSMenuItem *find_next_menu_item = [find_menu
-		addItemWithTitle:@"Find Next"
+		addItemWithTitle:NSLocalizedString(
+			@"Find Next",
+			@"Find Next menu item."
+		)
 		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"g"];
 	[find_next_menu_item setTag:NSTextFinderActionNextMatch];
 
 	NSMenuItem *find_previous_menu_item = [find_menu
-		addItemWithTitle:@"Find Previous"
+		addItemWithTitle:NSLocalizedString(
+			@"Find Previous",
+			@"Find Previous menu item."
+		)
 		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"G"];
 	[find_previous_menu_item setTag:NSTextFinderActionPreviousMatch];
 
 	NSMenuItem *use_selection_for_find_menu_item = [find_menu
-		addItemWithTitle:@"Use Selection for Find"
+		addItemWithTitle:NSLocalizedString(
+			@"Use Selection for Find",
+			@"Use Selection for Find menu item."
+		)
 		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"e"];
 	[use_selection_for_find_menu_item setTag:NSTextFinderActionSetSearchString];
 
 	[find_menu
-		addItemWithTitle:@"Jump to Selection"
+		addItemWithTitle:NSLocalizedString(
+			@"Jump to Selection",
+			@"Jump to Selection menu item."
+		)
 		action:@selector(centerSelectionInVisibleArea:)
 		keyEquivalent:@"j"];
 
 	// Spelling and Grammar menu.
 	NSMenuItem *spelling_and_grammar_menu_item = [edit_menu
-		addItemWithTitle:@"Spelling and Grammar"
+		addItemWithTitle:NSLocalizedString(
+			@"Spelling and Grammar",
+			@"Spelling and Grammar menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *spelling_and_grammar_menu = [[NSMenu alloc] initWithTitle:@"Spelling and Grammar"];
+	NSMenu *spelling_and_grammar_menu = [[NSMenu alloc]
+		initWithTitle:@"Spelling and Grammar"];
 	[edit_menu
 		setSubmenu:spelling_and_grammar_menu
 		forItem:spelling_and_grammar_menu_item];
 
 	[spelling_and_grammar_menu
-		addItemWithTitle:@"Show Spelling and Grammar"
+		addItemWithTitle:NSLocalizedString(
+			@"Show Spelling and Grammar",
+			@"Show Spelling and Grammar menu item."
+		)
 		action:@selector(showGuessPanel:)
 		keyEquivalent:@":"];
 	// NSLog(@"modifierMask: %lu", [x keyEquivalentModifierMask]);
 
 	[spelling_and_grammar_menu
-		addItemWithTitle:@"Check Document Now"
+		addItemWithTitle:NSLocalizedString(
+			@"Check Document Now",
+			@"Check Document Now menu item."
+		)
 		action:@selector(checkSpelling:)
 		keyEquivalent:@";"];
 
 	[spelling_and_grammar_menu addItem:[NSMenuItem separatorItem]];
 
 	[spelling_and_grammar_menu
-		addItemWithTitle:@"Check Spelling While Typing"
+		addItemWithTitle:NSLocalizedString(
+			@"Check Spelling While Typing",
+			@"Check Spelling While Typing menu item."
+		)
 		action:@selector(toggleContinuousSpellChecking:)
 		keyEquivalent:@""];
 
 	[spelling_and_grammar_menu
-		addItemWithTitle:@"Check Grammar With Spelling"
+		addItemWithTitle:NSLocalizedString(
+			@"Check Grammar With Spelling",
+			@"Check Grammar With Spelling menu item."
+		)
 		action:@selector(toggleGrammarChecking:)
 		keyEquivalent:@""];
 
 	[spelling_and_grammar_menu
-		addItemWithTitle:@"Correct Spelling Automatically"
+		addItemWithTitle:NSLocalizedString(
+			@"Correct Spelling Automatically",
+			@"Correct Spelling Automatically menu item."
+		)
 		action:@selector(toggleAutomaticSpellingCorrection:)
 		keyEquivalent:@""];
 
 	// Substitutions menu.
 	NSMenuItem *substitutions_menu_item = [edit_menu
-		addItemWithTitle:@"Substitutions"
+		addItemWithTitle:NSLocalizedString(
+			@"Substitutions",
+			@"Substitutions menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *substitutions_menu = [[NSMenu alloc] initWithTitle:@"Substitutions"];
+	NSMenu *substitutions_menu = [[NSMenu alloc]
+		initWithTitle:@"Substitutions"];
 	[edit_menu
 		setSubmenu:substitutions_menu
 		forItem:substitutions_menu_item];
 
 	[substitutions_menu
-		addItemWithTitle:@"Show Substitutions"
+		addItemWithTitle:NSLocalizedString(
+			@"Show Substitutions",
+			@"Show Substitutions menu item."
+		)
 		action:@selector(orderFrontSubstitutionsPanel:)
 		keyEquivalent:@""];
 
 	[substitutions_menu addItem:[NSMenuItem separatorItem]];
 
 	[substitutions_menu
-		addItemWithTitle:@"Smart Copy/Paste"
+		addItemWithTitle:NSLocalizedString(
+			@"Smart Copy/Paste",
+			@"Smart Copy/Paste menu item."
+		)
 		action:@selector(toggleSmartInsertDelete:)
 		keyEquivalent:@""];
 
 	[substitutions_menu
-		addItemWithTitle:@"Smart Quotes"
+		addItemWithTitle:NSLocalizedString(
+			@"Smart Quotes",
+			@"Smart Quotes menu item."
+		)
 		action:@selector(toggleAutomaticQuoteSubstitution:)
 		keyEquivalent:@""];
 
 	[substitutions_menu
-		addItemWithTitle:@"Smart Dashes"
+		addItemWithTitle:NSLocalizedString(
+			@"Smart Dashes",
+			@"Smart Dashes menu item."
+		)
 		action:@selector(toggleAutomaticDashSubstitution:)
 		keyEquivalent:@""];
 
 	[substitutions_menu
-		addItemWithTitle:@"Smart Links"
+		addItemWithTitle:NSLocalizedString(
+			@"Smart Links",
+			@"Smart Links menu item."
+		)
 		action:@selector(toggleAutomaticLinkDetection:)
 		keyEquivalent:@""];
 
 	[substitutions_menu
-		addItemWithTitle:@"Date Detectors"
+		addItemWithTitle:NSLocalizedString(
+			@"Date Detectors",
+			@"Date Detectors menu item."
+		)
 		action:@selector(toggleAutomaticDataDetection:)
 		keyEquivalent:@""];
 
 	[substitutions_menu
-		addItemWithTitle:@"Text Replacement"
+		addItemWithTitle:NSLocalizedString(
+			@"Text Replacement",
+			@"Text Replacement menu item."
+		)
 		action:@selector(toggleAutomaticTextReplacement:)
 		keyEquivalent:@""];
 
 	NSMenuItem *transformations_menu_item = [edit_menu
-		addItemWithTitle:@"Transformations"
+		addItemWithTitle:NSLocalizedString(
+			@"Transformations",
+			@"Transformations menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *transformations_menu = [[NSMenu alloc] initWithTitle:@"Transformations"];
+	NSMenu *transformations_menu = [[NSMenu alloc]
+		initWithTitle:@"Transformations"];
 	[edit_menu
 		setSubmenu:transformations_menu
 		forItem:transformations_menu_item];
 
 	[transformations_menu
-		addItemWithTitle:@"Make Upper Case"
+		addItemWithTitle:NSLocalizedString(
+			@"Make Upper Case",
+			@"Make Upper Case menu item."
+		)
 		action:@selector(uppercaseWord:)
 		keyEquivalent:@""];
 
 	[transformations_menu
-		addItemWithTitle:@"Make Lower Case"
+		addItemWithTitle:NSLocalizedString(
+			@"Make Lower Case",
+			@"Make Lower Case menu item."
+		)
 		action:@selector(lowercaseWord:)
 		keyEquivalent:@""];
 
 	[transformations_menu
-		addItemWithTitle:@"Capitalize"
+		addItemWithTitle:NSLocalizedString(
+			@"Capitalize",
+			@"Capitalize menu item."
+		)
 		action:@selector(capitalizeWord:)
 		keyEquivalent:@""];
 
 	NSMenuItem *speech_menu_item = [edit_menu
-		addItemWithTitle:@"Speech"
+		addItemWithTitle:NSLocalizedString(
+			@"Speech",
+			@"Speech menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *speech_menu = [[NSMenu alloc] initWithTitle:@"Speech"];
+	NSMenu *speech_menu = [[NSMenu alloc]
+		initWithTitle:@"Speech"];
 	[edit_menu
 		setSubmenu:speech_menu
 		forItem:speech_menu_item];
 
 	[speech_menu
-		addItemWithTitle:@"Start Speaking"
+		addItemWithTitle:NSLocalizedString(
+			@"Start Speaking",
+			@"Start Speaking menu item."
+		)
 		action:@selector(startSpeaking:)
 		keyEquivalent:@""];
 
 	[speech_menu
-		addItemWithTitle:@"Stop Speaking"
+		addItemWithTitle:NSLocalizedString(
+			@"Stop Speaking",
+			@"Stop Speaking menu item."
+		)
 		action:@selector(stopSpeaking:)
 		keyEquivalent:@""];
 
@@ -496,10 +661,17 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		initWithTitle:@"Format"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *format_menu = [[NSMenu alloc] initWithTitle:@"Format"];
+	NSMenu *format_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"Format",
+			@"Format menu title."
+		)];
 
 	NSMenuItem *font_menu_item = [format_menu
-		addItemWithTitle:@"Font"
+		addItemWithTitle:NSLocalizedString(
+			@"Font",
+			@"Font menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
 
@@ -512,38 +684,57 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 	MainMenuFixFontMenuKeyEquivalentModifierMask(font_menu);
 
 	NSMenuItem *text_menu_item = [format_menu
-		addItemWithTitle:@"Text"
+		addItemWithTitle:NSLocalizedString(
+			@"Text",
+			@"Text menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *text_menu = [[NSMenu alloc] initWithTitle:@"Text"];
+	NSMenu *text_menu = [[NSMenu alloc]
+		initWithTitle:@"Text"];
 	[format_menu
 		setSubmenu:text_menu
 		forItem:text_menu_item];
 
 	[text_menu
-		addItemWithTitle:@"Align Left"
+		addItemWithTitle:NSLocalizedString(
+			@"Align Left",
+			@"Align Left menu item."
+		)
 		action:@selector(alignLeft:)
 		keyEquivalent:@"{"];
 
 	[text_menu
-		addItemWithTitle:@"Center"
+		addItemWithTitle:NSLocalizedString(
+			@"Center",
+			@"Center menu item."
+		)
 		action:@selector(alignCenter:)
 		keyEquivalent:@"|"];
 
 	[text_menu
-		addItemWithTitle:@"Justify"
+		addItemWithTitle:NSLocalizedString(
+			@"Justify",
+			@"Justify menu item."
+		)
 		action:@selector(alignJustified:)
 		keyEquivalent:@""];
 
 	[text_menu
-		addItemWithTitle:@"Align Right"
+		addItemWithTitle:NSLocalizedString(
+			@"Align Right",
+			@"Align Right menu item."
+		)
 		action:@selector(alignRight:)
 		keyEquivalent:@"}"];
 
 	[text_menu addItem:[NSMenuItem separatorItem]];
 
 	NSMenuItem *writing_direction_menu_item = [text_menu
-		addItemWithTitle:@"Writing Direction"
+		addItemWithTitle:NSLocalizedString(
+			@"Writing Direction",
+			@"Writing Direction menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
 	NSMenu *writing_direction_menu = [[NSMenu alloc]
@@ -553,56 +744,86 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 		forItem:writing_direction_menu_item];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Paragraph"
+		addItemWithTitle:NSLocalizedString(
+			@"Paragraph",
+			@"Paragraph menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"\tDefault"
+		addItemWithTitle:NSLocalizedString(
+			@"\tDefault",
+			@"Default menu item."
+		)
 		action:@selector(makeBaseWritingDirectionNatural:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"\tLeft to Right"
+		addItemWithTitle:NSLocalizedString(
+			@"\tLeft to Right",
+			@"Left to Right menu item."
+		)
 		action:@selector(makeBaseWritingDirectionLeftToRight:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"\tRight to Left"
+		addItemWithTitle:NSLocalizedString(
+			@"\tRight to Left",
+			@"Right to Left menu item."
+		)
 		action:@selector(makeBaseWritingDirectionRightToLeft:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu addItem:[NSMenuItem separatorItem]];
 
 	[writing_direction_menu
-		addItemWithTitle:@"Selection"
+		addItemWithTitle:NSLocalizedString(
+			@"Selection",
+			@"Selection menu item."
+		)
 		action:nil
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"\tDefault"
+		addItemWithTitle:NSLocalizedString(
+			@"\tDefault",
+			@"Default menu item."
+		)
 		action:@selector(makeTextWritingDirectionNatural:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"\tLeft to Right"
+		addItemWithTitle:NSLocalizedString(
+			@"\tLeft to Right",
+			@"Left to Right menu item."
+		)
 		action:@selector(makeTextWritingDirectionLeftToRight:)
 		keyEquivalent:@""];
 
 	[writing_direction_menu
-		addItemWithTitle:@"\tRight to Left"
+		addItemWithTitle:NSLocalizedString(
+			@"\tRight to Left",
+			@"Right to Left menu item."
+		)
 		action:@selector(makeTextWritingDirectionRightToLeft:)
 		keyEquivalent:@""];
 
 	[text_menu addItem:[NSMenuItem separatorItem]];
 
 	[text_menu
-		addItemWithTitle:@"Show Ruler"
+		addItemWithTitle:NSLocalizedString(
+			@"Show Ruler",
+			@"Show Ruler menu item."
+		)
 		action:@selector(toggleRuler:)
 		keyEquivalent:@""];
 
 	NSMenuItem *copy_ruler_menu_item = [text_menu
-		addItemWithTitle:@"Copy Ruler"
+		addItemWithTitle:NSLocalizedString(
+			@"Copy Ruler",
+			@"Copy Ruler menu item."
+		)
 		action:@selector(copyRuler:)
 		keyEquivalent:@"c"];
 	[copy_ruler_menu_item
@@ -610,7 +831,10 @@ NSMenuItem *MainMenuCreateFormatMenuItem()
 			NSEventModifierFlagCommand | NSEventModifierFlagControl];
 
 	NSMenuItem *paste_ruler_menu_item = [text_menu
-		addItemWithTitle:@"Paste Ruler"
+		addItemWithTitle:NSLocalizedString(
+			@"Paste Ruler",
+			@"Paste Ruler menu item."
+		)
 		action:@selector(pasteRuler:)
 		keyEquivalent:@"v"];
 	[paste_ruler_menu_item
@@ -633,10 +857,17 @@ NSMenuItem *MainMenuCreateViewMenuItem()
 		initWithTitle:@"View"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *view_menu = [[NSMenu alloc] initWithTitle:@"View"];
+	NSMenu *view_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"View",
+			@"View menu title."
+		)];
 
 	NSMenuItem *show_toolbar_menu_item = [view_menu
-		addItemWithTitle:@"Show Toolbar"
+		addItemWithTitle:NSLocalizedString(
+			@"Show Toolbar",
+			@"Show Toolbar menu item."
+		)
 		action:@selector(toggleToolbarShown:)
 		keyEquivalent:@"t"];
 	[show_toolbar_menu_item
@@ -644,14 +875,20 @@ NSMenuItem *MainMenuCreateViewMenuItem()
 			NSEventModifierFlagCommand | NSEventModifierFlagOption];
 
 	[view_menu
-		addItemWithTitle:@"Customize Toolbar…"
+		addItemWithTitle:NSLocalizedString(
+			@"Customize Toolbar…",
+			@"Customize Toolbar… menu item."
+		)
 		action:@selector(runToolbarCustomizationPalette:)
 		keyEquivalent:@""];
 
 	[view_menu addItem:[NSMenuItem separatorItem]];
 
 	NSMenuItem *show_sidebar_menu_item = [view_menu
-		addItemWithTitle:@"Show Sidebar"
+		addItemWithTitle:NSLocalizedString(
+			@"Show Sidebar",
+			@"Show Sidebar menu item."
+		)
 		action:@selector(toggleSidebar:)
 		keyEquivalent:@"s"];
 	[show_sidebar_menu_item
@@ -659,7 +896,10 @@ NSMenuItem *MainMenuCreateViewMenuItem()
 			NSEventModifierFlagCommand | NSEventModifierFlagControl];
 
 	NSMenuItem *enter_full_screen_menu_item = [view_menu
-		addItemWithTitle:@"Enter Full Screen"
+		addItemWithTitle:NSLocalizedString(
+			@"Enter Full Screen",
+			@"Enter Full Screen menu item."
+		)
 		action:@selector(toggleFullScreen:)
 		keyEquivalent:@"f"];
 	[enter_full_screen_menu_item
@@ -679,22 +919,35 @@ NSMenuItem *MainMenuCreateWindowMenuItem()
 		initWithTitle:@"Window"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *window_menu = [[NSMenu alloc] initWithTitle:@"Window"];
+	NSMenu *window_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"Window",
+			@"Window menu title."
+		)];
 
 	[window_menu
-		addItemWithTitle:@"Minimize"
+		addItemWithTitle:NSLocalizedString(
+			@"Minimize",
+			@"Minimize menu item."
+		)
 		action:@selector(performMiniaturize:)
 		keyEquivalent:@"m"];
 
 	[window_menu
-		addItemWithTitle:@"Zoom"
+		addItemWithTitle:NSLocalizedString(
+			@"Zoom",
+			@"Zoom menu item."
+		)
 		action:@selector(performZoom:)
 		keyEquivalent:@""];
 
 	[window_menu addItem:[NSMenuItem separatorItem]];
 
 	[window_menu
-		addItemWithTitle:@"Bring All to Front"
+		addItemWithTitle:NSLocalizedString(
+			@"Bring All to Front",
+			@"Bring All to Front menu item."
+		)
 		action:@selector(arrangeInFront:)
 		keyEquivalent:@""];
 
@@ -711,7 +964,11 @@ NSMenuItem *MainMenuCreateHelpMenuItem()
 		initWithTitle:@"Help"
 		action:nil
 		keyEquivalent:@""];
-	NSMenu *help_menu = [[NSMenu alloc] initWithTitle:@"Help"];
+	NSMenu *help_menu = [[NSMenu alloc]
+		initWithTitle:NSLocalizedString(
+			@"Help",
+			@"Help menu title."
+		)];
 
 	NSString *help_title = [MainMenuGetApplicationName()
 		stringByAppendingString:@" Help"];
