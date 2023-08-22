@@ -46,6 +46,7 @@ NSMenu *MainMenuCreate()
 
 NSString *MainMenuGetApplicationName()
 {
+	// TODO: #define this from the Makefile
 	NSString *application_name = [[NSBundle mainBundle]
 		objectForInfoDictionaryKey:@"CFBundleName"];
 	if (!application_name) {
