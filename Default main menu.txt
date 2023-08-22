@@ -56,7 +56,7 @@ Edit
 		Smart Quotes
 		Smart Dashes
 		Smart Links
-		Date Detectors
+		Data Detectors
 		Text Replacement
 	Transformations >
 		Make Upper Case

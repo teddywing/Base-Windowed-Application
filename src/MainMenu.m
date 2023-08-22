@@ -525,8 +525,8 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 
 	[substitutions_menu
 		addItemWithTitle:NSLocalizedString(
-			@"Date Detectors",
-			@"Date Detectors menu item."
+			@"Data Detectors",
+			@"Data Detectors menu item."
 		)
 		action:@selector(toggleAutomaticDataDetection:)
 		keyEquivalent:@""];

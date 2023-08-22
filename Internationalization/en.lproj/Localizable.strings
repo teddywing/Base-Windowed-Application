@@ -52,8 +52,8 @@
 /* Cut menu item. */
 "Cut" = "Cut";
 
-/* Date Detectors menu item. */
-"Date Detectors" = "Date Detectors";
+/* Data Detectors menu item. */
+"Data Detectors" = "Data Detectors";
 
 /* Delete menu item. */
 "Delete" = "Delete";
