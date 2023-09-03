@@ -9,7 +9,7 @@ testnospace:
 SOURCES := $(shell find src -name '*.m')
 OBJECTS := $(SOURCES:%.m=%.o)
 
-LPROJS := $(shell ls Internationalization)
+LPROJS := $(shell find Internationalization -depth 1)
 
 PRODUCT := build/Application
 
@@ -75,13 +75,13 @@ build/$(APP_NAME_NOSPACE).app/Contents/Resources: | build/$(APP_NAME_NOSPACE).ap
 build/$(APP_NAME_NOSPACE).app/Contents/Resources/%.lproj: \
 Internationalization/%.lproj \
 | build/$(APP_NAME_NOSPACE).app/Contents/Resources
-	cp $< "${@}"
+	cp -R $< "${@}"
 
 .PHONY: app
 app: \
 build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE) \
 build/$(APP_NAME_NOSPACE).app/Contents/Info.plist \
-$(patsubst Internationalization/%,build/$(APP_NAME_NOSPACE).app/Contents/Resources/%,$(LPROJS))
+$(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LPROJS))
 
 # $(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LOCALIZABLE_STRINGS))
 
