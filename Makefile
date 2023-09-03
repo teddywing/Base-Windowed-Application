@@ -34,11 +34,15 @@ build:
 	mkdir -p build
 
 build/$(APP_NAME).app: build/$(APP_NAME_NOSPACE).app
-	mv $< "${@}"
+	cp -R $< "${@}"
 
-build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME): \
-build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE)
-	mv $< "${@}"
+build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME): \
+build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME_NOSPACE)
+	mv "${<}" "${@}"
+
+# build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME): \
+# build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE)
+# 	mv $< "${@}"
 
 build/$(APP_NAME_NOSPACE).app: | build
 	mkdir -p build/$(APP_NAME_NOSPACE).app
@@ -85,8 +89,8 @@ app: \
 build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE) \
 build/$(APP_NAME_NOSPACE).app/Contents/Info.plist \
 $(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LPROJS)) \
-build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME) \
-build/$(APP_NAME).app
+build/$(APP_NAME).app \
+build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME)
 
 # $(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LOCALIZABLE_STRINGS))
 
