@@ -1,5 +1,10 @@
 APP_NAME := Base\ Windowed\ Application
 
+NBSP := $(shell perl -C -e 'print chr 0xfeff')
+APP_NAME_NOSPACE := $(subst \ ,$(NBSP),$(APP_NAME))
+testnospace:
+	echo $(APP_NAME_NOSPACE)
+
 
 SOURCES := $(shell find src -name '*.m')
 OBJECTS := $(SOURCES:%.m=%.o)
