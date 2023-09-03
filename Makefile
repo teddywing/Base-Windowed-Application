@@ -33,53 +33,57 @@ $(PRODUCT): $(OBJECTS) | build
 build:
 	mkdir -p build
 
-build/$(APP_NAME).app: | build
-	mkdir -p build/$(APP_NAME).app
+# TODO: No space version.
+# build/$(APP_NAME).app: | build
+# 	mkdir -p build/$(APP_NAME).app
 
-build/$(APP_NAME).app/Contents: | build/$(APP_NAME).app
-	mkdir -p build/$(APP_NAME).app/Contents
+build/$(APP_NAME_NOSPACE).app: | build
+	mkdir -p build/$(APP_NAME_NOSPACE).app
 
-build/$(APP_NAME).app/Contents/MacOS: | build/$(APP_NAME).app/Contents
-	mkdir -p build/$(APP_NAME).app/Contents/MacOS
+build/$(APP_NAME_NOSPACE).app/Contents: | build/$(APP_NAME_NOSPACE).app
+	mkdir -p build/$(APP_NAME_NOSPACE).app/Contents
 
-build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME): $(OBJECTS) \
-| build/$(APP_NAME).app/Contents/MacOS
+build/$(APP_NAME_NOSPACE).app/Contents/MacOS: | build/$(APP_NAME_NOSPACE).app/Contents
+	mkdir -p build/$(APP_NAME_NOSPACE).app/Contents/MacOS
+
+build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE): $(OBJECTS) \
+| build/$(APP_NAME_NOSPACE).app/Contents/MacOS
 	$(CC) \
 		-framework Cocoa \
 		-o "${@}" \
 		$^
 
-# build/$(APP_NAME).app/Contents/Info.plist: Info.m4.plist \
-# | build/$(APP_NAME).app/Contents
+# build/$(APP_NAME_NOSPACE).app/Contents/Info.plist: Info.m4.plist \
+# | build/$(APP_NAME_NOSPACE).app/Contents
 # 	m4 \
 # 		--define='CF_BUNDLE_VERSION=$(CF_BUNDLE_VERSION)' \
 # 		$< \
 # 		> $@
-build/$(APP_NAME).app/Contents/Info.plist: Info.plist \
-| build/$(APP_NAME).app/Contents
+build/$(APP_NAME_NOSPACE).app/Contents/Info.plist: Info.plist \
+| build/$(APP_NAME_NOSPACE).app/Contents
 	cp $< "${@}"
 
-build/$(APP_NAME).app/Contents/Resources: | build/$(APP_NAME).app/Contents
-	mkdir -p build/$(APP_NAME).app/Contents/Resources
+build/$(APP_NAME_NOSPACE).app/Contents/Resources: | build/$(APP_NAME_NOSPACE).app/Contents
+	mkdir -p build/$(APP_NAME_NOSPACE).app/Contents/Resources
 
-# build/$(APP_NAME).app/Contents/Resources/%.lproj/Localizable.strings: \
+# build/$(APP_NAME_NOSPACE).app/Contents/Resources/%.lproj/Localizable.strings: \
 # Internationalization/%.lproj/Localizable.strings \
-# | build/$(APP_NAME).app/Contents/Resources
+# | build/$(APP_NAME_NOSPACE).app/Contents/Resources
 # 	mkdir -p $(dir "${@}")
 # 	cp $< "${@}"
 
-build/$(APP_NAME).app/Contents/Resources/%.lproj: \
+build/$(APP_NAME_NOSPACE).app/Contents/Resources/%.lproj: \
 Internationalization/%.lproj \
-| build/$(APP_NAME).app/Contents/Resources
+| build/$(APP_NAME_NOSPACE).app/Contents/Resources
 	cp $< "${@}"
 
 .PHONY: app
 app: \
-build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME) \
-build/$(APP_NAME).app/Contents/Info.plist \
-$(patsubst Internationalization/%,build/$(APP_NAME).app/Contents/Resources/%,$(LPROJS))
+build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE) \
+build/$(APP_NAME_NOSPACE).app/Contents/Info.plist \
+$(patsubst Internationalization/%,build/$(APP_NAME_NOSPACE).app/Contents/Resources/%,$(LPROJS))
 
-# $(subst Internationalization/,build/$(APP_NAME).app/Contents/Resources/,$(LOCALIZABLE_STRINGS))
+# $(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LOCALIZABLE_STRINGS))
 
 
 .PHONY: genstrings
