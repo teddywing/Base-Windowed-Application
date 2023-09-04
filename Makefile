@@ -2,6 +2,7 @@ APP_NAME := Base\ Windowed\ Application
 
 NBSP := $(shell perl -C -e 'print chr 0xfeff')
 APP_NAME_NOSPACE := $(subst \ ,$(NBSP),$(APP_NAME))
+NOSPACE_BUNDLE_FILES = $(shell find build/$(APP_NAME_NOSPACE).app -type f)
 testnospace:
 	echo $(APP_NAME_NOSPACE)
 
@@ -33,12 +34,15 @@ $(PRODUCT): $(OBJECTS) | build
 build:
 	mkdir -p build
 
-build/$(APP_NAME).app: build/$(APP_NAME_NOSPACE).app
-	cp -R $< "${@}"
+# build/$(APP_NAME).app: build/$(APP_NAME_NOSPACE).app
+# 	cp -R $< "${@}"
+build/$(APP_NAME).app: $(NOSPACE_BUNDLE_FILES)
+	rsync -rupE build/$(APP_NAME_NOSPACE).app/ "${@}/"
 
 build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME): \
-build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME_NOSPACE)
-	mv "${<}" "${@}"
+build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE)
+	cp -a "${<}" "${@}"
+	rm -f build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME_NOSPACE)
 
 # build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME): \
 # build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE)
