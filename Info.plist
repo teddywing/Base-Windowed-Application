@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Base Windowed Application</string>
 	<key>CFBundleExecutable</key>
-	<string>Application</string>
+	<string>Base Windowed Application</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.teddywing.Base-Windowed-Application</string>
 	<key>CFBundleInfoDictionaryVersion</key>
