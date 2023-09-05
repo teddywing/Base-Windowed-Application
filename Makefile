@@ -1,4 +1,4 @@
-APP_NAME := Base\ Windowed\ Application
+APP_NAME := Nospace
 
 NBSP := $(shell perl -C -e 'print chr 0xfeff')
 APP_NAME_NOSPACE := $(subst \ ,$(NBSP),$(APP_NAME))
