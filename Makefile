@@ -34,6 +34,7 @@ $(PRODUCT): $(OBJECTS) | build
 build:
 	mkdir -p build
 
+ifneq ($(APP_NAME),$(APP_NAME_NOSPACE))
 # build/$(APP_NAME).app: build/$(APP_NAME_NOSPACE).app
 # 	cp -R $< "${@}"
 build/$(APP_NAME).app: $(NOSPACE_BUNDLE_FILES)
@@ -47,6 +48,7 @@ build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE)
 # build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME): \
 # build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE)
 # 	mv $< "${@}"
+endif
 
 build/$(APP_NAME_NOSPACE).app: | build
 	mkdir -p build/$(APP_NAME_NOSPACE).app
@@ -88,6 +90,13 @@ Internationalization/%.lproj \
 | build/$(APP_NAME_NOSPACE).app/Contents/Resources
 	cp -R $< "${@}"
 
+ifeq ($(APP_NAME),$(APP_NAME_NOSPACE))
+.PHONY: app
+app: \
+build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE) \
+build/$(APP_NAME_NOSPACE).app/Contents/Info.plist \
+$(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LPROJS))
+else
 .PHONY: app
 app: \
 build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE) \
@@ -97,6 +106,7 @@ build/$(APP_NAME).app \
 build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME)
 
 # $(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LOCALIZABLE_STRINGS))
+endif
 
 
 .PHONY: genstrings
