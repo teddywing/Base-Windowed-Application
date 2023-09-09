@@ -358,8 +358,8 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 			@"Find…",
 			@"Find… menu item."
 		)
-		action:@selector(performFindPanelAction:)
-		// action:@selector(performTextFinderAction:)
+		// action:@selector(performFindPanelAction:)
+		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"f"];
 	[find_ellipsis_menu_item setTag:NSTextFinderActionShowFindInterface];
 	// [find_ellipsis_menu_item setTag:1];
