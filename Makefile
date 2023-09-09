@@ -6,7 +6,7 @@ APP_NAME_NOSPACE := $(subst \ ,$(NBSP),$(APP_NAME))
 SOURCES := $(shell find src -name '*.m')
 OBJECTS := $(SOURCES:%.m=%.o)
 
-LPROJS := $(shell find Internationalization -depth 1)
+LOCALIZABLE_STRINGS := $(shell find Internationalization -name Localizable.strings)
 
 PRODUCT := build/Application
 
@@ -53,6 +53,12 @@ build/$(APP_NAME_NOSPACE).app/Contents/Info.plist: Info.plist \
 build/$(APP_NAME_NOSPACE).app/Contents/Resources: | build/$(APP_NAME_NOSPACE).app/Contents
 	mkdir -p build/$(APP_NAME_NOSPACE).app/Contents/Resources
 
+build/$(APP_NAME_NOSPACE).app/Contents/Resources/%.lproj/Localizable.strings: \
+Internationalization/%.lproj/Localizable.strings \
+| build/$(APP_NAME_NOSPACE).app/Contents/Resources
+	mkdir -p "$(dir ${@})"
+	cp $< "${@}"
+
 build/$(APP_NAME_NOSPACE).app/Contents/Resources/%.lproj: \
 Internationalization/%.lproj \
 | build/$(APP_NAME_NOSPACE).app/Contents/Resources
@@ -64,7 +70,7 @@ ifeq ($(APP_NAME),$(APP_NAME_NOSPACE))
 app: \
 build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE) \
 build/$(APP_NAME_NOSPACE).app/Contents/Info.plist \
-$(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LPROJS))
+$(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LOCALIZABLE_STRINGS))
 
 # Application name does have spaces.
 else
@@ -83,7 +89,7 @@ build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE)
 app: \
 build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE) \
 build/$(APP_NAME_NOSPACE).app/Contents/Info.plist \
-$(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LPROJS)) \
+$(subst Internationalization/,build/$(APP_NAME_NOSPACE).app/Contents/Resources/,$(LOCALIZABLE_STRINGS)) \
 build/$(APP_NAME).app \
 build/$(APP_NAME).app/Contents/MacOS/$(APP_NAME)
 endif
