@@ -339,7 +339,6 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 	[edit_menu addItem:[NSMenuItem separatorItem]];
 
 	// Find menu.
-	// TODO: Find items don't appear to work except for D-j
 	NSMenuItem *find_menu_item = [edit_menu
 		addItemWithTitle:NSLocalizedString(
 			@"Find",
@@ -358,12 +357,9 @@ NSMenuItem *MainMenuCreateEditMenuItem()
 			@"Find…",
 			@"Find… menu item."
 		)
-		// action:@selector(performFindPanelAction:)
 		action:@selector(performTextFinderAction:)
 		keyEquivalent:@"f"];
 	[find_ellipsis_menu_item setTag:NSTextFinderActionShowFindInterface];
-	// [find_ellipsis_menu_item setTag:1];
-	// NSFindPanelActionShowFindPanel ?
 
 	NSMenuItem *find_and_replace_menu_item = [find_menu
 		addItemWithTitle:NSLocalizedString(

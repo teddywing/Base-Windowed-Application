@@ -8,7 +8,6 @@
 	[_window release];
 	[_scroll_view release];
 	[_text_view release];
-	// [_text_finder release];
 	[super dealloc];
 }
 
@@ -46,10 +45,6 @@
 
 	[[_window contentView] addSubview:_scroll_view];
 	// [_window setContentView:_text_view];
-
-	// _text_finder = [[NSTextFinder alloc] init];
-	// [_text_finder setClient:(id<NSTextFinderClient>)_text_view];
-	// [_text_finder setFindBarContainer:_scroll_view];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
@@ -57,11 +52,5 @@
 	[_window cascadeTopLeftFromPoint:NSMakePoint(100, 100)];
 	[_window makeKeyAndOrderFront:nil];
 }
-
-// - (IBAction)performTextFinderAction:(id)sender
-// {
-// 	NSLog(@"performTextFinderAction: performing %ld", [sender tag]);
-// 	[_text_finder performAction:[sender tag]];
-// }
 
 @end
