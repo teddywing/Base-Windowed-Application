@@ -10,20 +10,23 @@ LOCALIZABLE_STRINGS := $(shell find Internationalization -name Localizable.strin
 
 PRODUCT := build/Application
 
+CFLAGS += -x objective-c
+LDFLAGS += -framework Cocoa
+
 
 .PHONY: all
 all: $(PRODUCT)
 
 %.o: %.m
 	$(CC) \
-		-x objective-c \
+		$(CFLAGS) \
 		-c \
 		$< \
 		-o $@
 
 $(PRODUCT): $(OBJECTS) | build
 	$(CC) \
-		-framework Cocoa \
+		$(LDFLAGS) \
 		-o $@ \
 		$^
 
@@ -42,7 +45,7 @@ build/$(APP_NAME_NOSPACE).app/Contents/MacOS: | build/$(APP_NAME_NOSPACE).app/Co
 build/$(APP_NAME_NOSPACE).app/Contents/MacOS/$(APP_NAME_NOSPACE): $(OBJECTS) \
 | build/$(APP_NAME_NOSPACE).app/Contents/MacOS
 	$(CC) \
-		-framework Cocoa \
+		$(LDFLAGS) \
 		-o "${@}" \
 		$^
 
