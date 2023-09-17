@@ -8,14 +8,12 @@ OBJECTS := $(SOURCES:%.m=%.o)
 
 LOCALIZABLE_STRINGS := $(shell find Internationalization -name Localizable.strings)
 
-PRODUCT := build/Application
-
 CFLAGS += -x objective-c
 LDFLAGS += -framework Cocoa
 
 
 .PHONY: all
-all: $(PRODUCT)
+all: app
 
 %.o: %.m
 	$(CC) \
@@ -23,12 +21,6 @@ all: $(PRODUCT)
 		-c \
 		$< \
 		-o $@
-
-$(PRODUCT): $(OBJECTS) | build
-	$(CC) \
-		$(LDFLAGS) \
-		-o $@ \
-		$^
 
 build:
 	mkdir -p build
