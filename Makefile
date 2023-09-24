@@ -9,6 +9,7 @@ OBJECTS := $(SOURCES:%.m=%.o)
 LOCALIZABLE_STRINGS := $(shell find Internationalization -name Localizable.strings)
 
 CFLAGS += -x objective-c
+CFLAGS += -Wall -Werror
 LDFLAGS += -framework Cocoa
 
 
