@@ -1,11 +1,21 @@
 #import "Document.h"
 
+static NSPoint *cascade_offset;
+
 @implementation Document
 
 - (id)init
 {
 	self = [super init];
 	if (self) {
+		NSLog(@"Checking cascade_offset");
+		if (!cascade_offset) {
+			NSLog(@"Setting cascade_offset");
+			NSPoint p = NSMakePoint(100, 100);
+			cascade_offset = &p;
+			NSLog(@"Has set cascade_offset");
+		}
+
 		_label = [[NSTextField alloc]
 			initWithFrame:NSMakeRect(0, 0, 180, 20)];
 		[_label setStringValue:@"Your document contents here"];
@@ -31,7 +41,7 @@
 	// DocumentWindowController *controller = [[DocumentWindowController alloc] init];
 
 	NSWindow *window = [[NSWindow alloc]
-		initWithContentRect:NSMakeRect(0, 0, 600, 500)
+		initWithContentRect:NSMakeRect(100, 50, 600, 500)
 		styleMask:
 			NSWindowStyleMaskTitled
 			| NSWindowStyleMaskClosable
@@ -63,7 +73,14 @@
 		| NSViewMaxYMargin];
 
 	// TODO: Cascade, store previous top-left position.
-	// [window cascadeTopLeftFromPoint:NSMakePoint(100, 100)];
+	if (cascade_offset) {
+		// cascade_offset = NSMakePoint(100, 100);
+		NSLog(@"Yes");
+	}
+
+	*cascade_offset = [window cascadeTopLeftFromPoint:*cascade_offset];
+
+	// cascade_offset = [window frame].origin;
 
 	NSWindowController *window_controller = [[NSWindowController alloc]
 		initWithWindow:window];
