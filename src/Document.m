@@ -8,8 +8,7 @@ static NSPoint cascade_offset;
 {
 	self = [super init];
 	if (self) {
-		_label = [[NSTextField alloc]
-			initWithFrame:NSMakeRect(0, 0, 180, 20)];
+		_label = [[NSTextField alloc] initWithFrame:NSZeroRect];
 		[_label setStringValue:@"Your document contents here"];
 		[_label setBezeled:NO];
 		[_label setDrawsBackground:NO];
@@ -25,13 +24,8 @@ static NSPoint cascade_offset;
 	[super dealloc];
 }
 
-// TODO: Are window controllers deallocated automatically by the parent?
-// [[NSWindowController alloc] initWithWindow:]?
-
 - (void)makeWindowControllers
 {
-	// DocumentWindowController *controller = [[DocumentWindowController alloc] init];
-
 	NSWindow *window = [[NSWindow alloc]
 		initWithContentRect:NSMakeRect(100, 50, 600, 500)
 		styleMask:
@@ -41,12 +35,10 @@ static NSPoint cascade_offset;
 			| NSWindowStyleMaskResizable
 		backing:NSBackingStoreBuffered
 		defer:NO];
-	// [window setFrameAutosaveName:@"document"]; // document name?
 	[[window contentView] addSubview:_label];
 
 	// Center the label.
 	NSRect content_view_frame = [[window contentView] frame];
-	// NSSize window_size = [[window contentView] bounds].size;
 	NSPoint content_view_center = NSMakePoint(
 		NSMidX(content_view_frame),
 		NSMidY(content_view_frame)
@@ -69,7 +61,6 @@ static NSPoint cascade_offset;
 
 	NSWindowController *window_controller = [[NSWindowController alloc]
 		initWithWindow:window];
-	// [window_controller setShouldCascadeWindows:YES];
 
 	[self addWindowController:window_controller];
 }
