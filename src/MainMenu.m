@@ -126,7 +126,7 @@ NSMenuItem *MainMenuCreateApplicationMenuItem()
 		setKeyEquivalentModifierMask:
 			NSEventModifierFlagCommand | NSEventModifierFlagOption];
 
-	NSMenuItem *show_all_menu_item = [application_menu
+	[application_menu
 		addItemWithTitle:NSLocalizedString(
 			@"Show All",
 			@"Show All menu item."
