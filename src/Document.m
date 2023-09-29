@@ -1,6 +1,6 @@
 #import "Document.h"
 
-static NSPoint *cascade_offset = NULL;
+static NSPoint cascade_offset;
 
 @implementation Document
 
@@ -9,14 +9,13 @@ static NSPoint *cascade_offset = NULL;
 	self = [super init];
 	if (self) {
 		NSLog(@"Checking cascade_offset");
-		if (!cascade_offset) {
+		if (NSEqualPoints(cascade_offset, NSZeroPoint)) {
 			NSLog(@"Setting cascade_offset");
-			NSPoint p = NSMakePoint(100, 100);
-			cascade_offset = &p;
-			NSLog(@"Has set cascade_offset x:%f y:%f", cascade_offset->x, cascade_offset->y);
+			cascade_offset = NSMakePoint(100, 100);
+			NSLog(@"Has set cascade_offset x:%f y:%f", cascade_offset.x, cascade_offset.y);
 		}
 		else {
-			NSLog(@"init has cascade_offset x:%f y:%f", cascade_offset->x, cascade_offset->y);
+			NSLog(@"init has cascade_offset x:%f y:%f", cascade_offset.x, cascade_offset.y);
 		}
 
 		_label = [[NSTextField alloc]
@@ -75,20 +74,11 @@ static NSPoint *cascade_offset = NULL;
 		| NSViewMinYMargin
 		| NSViewMaxYMargin];
 
-	// TODO: Cascade, store previous top-left position.
-	// Figure out why the cascade isn't cascading by enough. Try logging origin values.
-	if (cascade_offset) {
-		// cascade_offset = NSMakePoint(100, 100);
-		NSLog(@"Yes");
-		// default	21:03:08.812158+0200	Base Windowed Application	makeWindowControllers cascade_offset x:-0.000000 y:-0.000000
-		NSPoint o = *cascade_offset;
-		NSLog(@"makeWindowControllers cascade_offset x:%f y:%f", o.x, o.y);
-	}
-
-	*cascade_offset = [window cascadeTopLeftFromPoint:*cascade_offset];
+	// *cascade_offset = [window cascadeTopLeftFromPoint:*cascade_offset];
 	// NSPoint o = [window cascadeTopLeftFromPoint:*cascade_offset];
 	// cascade_offset = &o;
-	NSLog(@"after setting cascade_offset x:%f y:%f", cascade_offset->x, cascade_offset->y);
+	cascade_offset = [window cascadeTopLeftFromPoint:cascade_offset];
+	NSLog(@"after setting cascade_offset x:%f y:%f", cascade_offset.x, cascade_offset.y);
 
 	// cascade_offset = [window frame].origin;
 
