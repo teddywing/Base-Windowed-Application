@@ -1,5 +1,7 @@
 #import "MainMenu.h"
 
+#define AppName MK_APP_NAME
+
 NSMenuItem *MainMenuCreateApplicationMenuItem();
 NSMenuItem *MainMenuCreateFileMenuItem();
 NSMenuItem *MainMenuCreateEditMenuItem();
@@ -46,6 +48,8 @@ NSMenu *MainMenuCreate()
 
 NSString *MainMenuGetApplicationName()
 {
+	NSLog(@"App name: %@", AppName);
+
 	// TODO: #define this from the Makefile
 	NSString *application_name = [[NSBundle mainBundle]
 		objectForInfoDictionaryKey:@"CFBundleName"];
