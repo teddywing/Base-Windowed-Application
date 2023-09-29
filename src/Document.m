@@ -8,16 +8,6 @@ static NSPoint cascade_offset;
 {
 	self = [super init];
 	if (self) {
-		NSLog(@"Checking cascade_offset");
-		if (NSEqualPoints(cascade_offset, NSZeroPoint)) {
-			NSLog(@"Setting cascade_offset");
-			cascade_offset = NSMakePoint(100, 100);
-			NSLog(@"Has set cascade_offset x:%f y:%f", cascade_offset.x, cascade_offset.y);
-		}
-		else {
-			NSLog(@"init has cascade_offset x:%f y:%f", cascade_offset.x, cascade_offset.y);
-		}
-
 		_label = [[NSTextField alloc]
 			initWithFrame:NSMakeRect(0, 0, 180, 20)];
 		[_label setStringValue:@"Your document contents here"];
@@ -74,13 +64,8 @@ static NSPoint cascade_offset;
 		| NSViewMinYMargin
 		| NSViewMaxYMargin];
 
-	// *cascade_offset = [window cascadeTopLeftFromPoint:*cascade_offset];
-	// NSPoint o = [window cascadeTopLeftFromPoint:*cascade_offset];
-	// cascade_offset = &o;
+	// Store the next window origin to shift a new document window's origin.
 	cascade_offset = [window cascadeTopLeftFromPoint:cascade_offset];
-	NSLog(@"after setting cascade_offset x:%f y:%f", cascade_offset.x, cascade_offset.y);
-
-	// cascade_offset = [window frame].origin;
 
 	NSWindowController *window_controller = [[NSWindowController alloc]
 		initWithWindow:window];
