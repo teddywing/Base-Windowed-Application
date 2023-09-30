@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Base Windowed Application</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.teddywing.Base-Windowed-Application</string>
+	<string>com.yourcompany.Base-Windowed-Application</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -23,7 +23,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.12</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2023 Teddy Wing</string>
+	<string>Copyright © 2023 Your Name. All rights reserved.</string>
 
 	<key>CFBundleDocumentTypes</key>
 	<array>
