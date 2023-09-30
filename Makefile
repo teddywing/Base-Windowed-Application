@@ -10,7 +10,6 @@ LOCALIZABLE_STRINGS := $(shell find Internationalization -name Localizable.strin
 
 CFLAGS += -x objective-c
 CFLAGS += -Wall -Werror
-CFLAGS += -DMK_APP_NAME="@\"$(APP_NAME)\""
 LDFLAGS += -framework Cocoa
 
 
