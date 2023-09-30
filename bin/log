@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# log
+# Stream logs from the application.
+
+application_name="$(
+	/usr/libexec/PlistBuddy \
+		-c 'Print :CFBundleName' \
+		Info.plist
+)"
+
+log stream --predicate "process == '${application_name}'"
