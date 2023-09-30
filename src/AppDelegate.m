@@ -13,9 +13,6 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification
 {
-	// NSFontManager *font_manager = [NSFontManager sharedFontManager];
-	// NSLog(@"FontManager: %@", [font_manager fontMenu:YES]);
-
 	NSMenu *menubar = MainMenuCreate();
 	[NSApp setMainMenu:menubar];
 	[menubar release];
@@ -44,7 +41,6 @@
 	[_scroll_view setDocumentView:_text_view];
 
 	[[_window contentView] addSubview:_scroll_view];
-	// [_window setContentView:_text_view];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
