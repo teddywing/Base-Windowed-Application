@@ -40,7 +40,7 @@
 	[_scroll_view setHasVerticalScroller:YES];
 	[_scroll_view setDocumentView:_text_view];
 
-	[[_window contentView] addSubview:_scroll_view];
+	[_window setContentView:_scroll_view];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
