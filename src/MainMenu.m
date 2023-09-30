@@ -1,7 +1,5 @@
 #import "MainMenu.h"
 
-static const NSString *kAppName = @"Base Windowed Application";
-
 NSMenuItem *MainMenuCreateApplicationMenuItem();
 NSMenuItem *MainMenuCreateFileMenuItem();
 NSMenuItem *MainMenuCreateEditMenuItem();
@@ -48,9 +46,6 @@ NSMenu *MainMenuCreate()
 
 NSString *MainMenuGetApplicationName()
 {
-	NSLog(@"App name: %@", kAppName);
-
-	// TODO: #define this from the Makefile
 	NSString *application_name = [[NSBundle mainBundle]
 		objectForInfoDictionaryKey:@"CFBundleName"];
 	if (!application_name) {
