@@ -121,9 +121,6 @@
 /* New menu item. */
 "New" = "Nouveau";
 
-/* Open Recent menu item. */
-"Open Recent" = "Ouvrir l’élément récent";
-
 /* Open… menu item. */
 "Open…" = "Ouvrir…";
 
